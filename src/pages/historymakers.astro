@@ -57,6 +57,198 @@ const sheetMusic = [
   { title: 'Parthenia Johnsing ("A New Negro Melody")', credits: 'Music Will Marion Cook', notes: 'As sung by Abbie Mitchell. Music Supplement of the New York American and Journal, Sunday, Dec. 21, 1902, pages 5-8', href: 'https://dl.thehistorymakers.org/catalog/eb247131b2ec9cd9a7e770c5174bb88c' },
   { title: 'Songs from The Casino Girl (4 songs, one cover: Down De Lovers Lane, Romance, Whatever The Hue Of Your Eyes, By-Gone Days Are Best)', credits: 'Words Paul L. Dunbar / Harry B. Smith / L. Lamprey, Music Will Marion Cook', notes: 'Direction of George Lederer, 1900–01. Pub. Jos. W. Stern & Co., New York / Chicago / London', href: 'https://dl.thehistorymakers.org/catalog/01ec14efca2a56b9336f4491032b0963' },
 ];
+
+const timelinePeople = ['Will Marion Cook', 'Abbie Mitchell', 'Paul Laurence Dunbar', 'George Gershwin', 'Tallulah Bankhead', 'Marie Cahill'];
+
+const eras = [
+  {
+    label: '1898',
+    title: "The cakewalk's Broadway debut",
+    events: [
+      {
+        date: '1898',
+        cat: 'hub',
+        title: '“Clorindy, or The Origin of the Cake Walk”',
+        people: ['Will Marion Cook', 'Paul Laurence Dunbar', 'Abbie Mitchell'],
+        note: "Cook and Dunbar's cakewalk musical — and, per Mitchell's biography, the show Cook wrote her into the same year he married her, at age fourteen.",
+        items: [
+          { title: '“Darktown Is Out To-Night” (Cake Walk Song and Chorus)', url: 'https://dl.thehistorymakers.org/catalog/c11963e964a199520ef1c0c5bb647cb5' },
+          { title: "“Dey'll Be Wahin' / Coons a Prancin'” (finale, as sung at the Orpheum)", url: 'https://dl.thehistorymakers.org/catalog/49dc1b50903859608fc151f1dcffea39' },
+        ],
+      },
+    ],
+  },
+  {
+    label: '1900 – 1910',
+    title: 'Broadway and vaudeville',
+    events: [
+      {
+        date: '1900–01',
+        cat: 'hub',
+        title: '“The Casino Girl”',
+        people: ['Will Marion Cook', 'Paul Laurence Dunbar'],
+        items: [{ title: 'Four songs incl. “Down De Lovers Lane”', url: 'https://dl.thehistorymakers.org/catalog/01ec14efca2a56b9336f4491032b0963' }],
+      },
+      {
+        date: '1902',
+        cat: 'hub',
+        title: '“The Wild Rose”',
+        people: ['Will Marion Cook'],
+        items: [{ title: 'Three songs incl. “The Little Gypsy Maid”', url: 'https://dl.thehistorymakers.org/catalog/0119cf3b8d44392f2a454fcea74e2cbe' }],
+      },
+      {
+        date: '1902',
+        cat: 'hub',
+        title: '“On Emancipation Day”',
+        people: ['Will Marion Cook', 'Paul Laurence Dunbar'],
+        note: "Billed on the cover as “Dunbar and Cook's latest and greatest success.”",
+        items: [{ title: 'March and march song', url: 'https://dl.thehistorymakers.org/catalog/221729cc2ef0d10b5a165c9a1ef9f890' }],
+      },
+      {
+        date: 'Sept 21, 1902',
+        cat: 'hub',
+        title: '“Returned”',
+        people: ['Will Marion Cook', 'Abbie Mitchell'],
+        note: "“A Negro Ballad,” billed as sung by Mitchell at Mrs. Cornelius Vanderbilt's Newport theatre party.",
+        items: [{ title: 'N.Y. American and Journal music supplement', url: 'https://dl.thehistorymakers.org/catalog/7f8c128f723cc355e2a5b130afa5add5' }],
+      },
+      {
+        date: 'Dec 21, 1902',
+        cat: 'hub',
+        title: '“Parthenia Johnsing”',
+        people: ['Will Marion Cook', 'Abbie Mitchell'],
+        note: 'Billed as sung by Mitchell; Cook credited as “the composer of In Dahomey.”',
+        items: [{ title: 'N.Y. American and Journal music supplement', url: 'https://dl.thehistorymakers.org/catalog/eb247131b2ec9cd9a7e770c5174bb88c' }],
+      },
+      {
+        date: 'March 22, 1903',
+        cat: 'hub',
+        title: "“Good Evenin'”",
+        people: ['Will Marion Cook', 'Paul Laurence Dunbar'],
+        note: 'Sold as “A Real Native Southern Negro Melody” — period marketing language, transcribed as printed.',
+        items: [{ title: 'N.Y. American and Journal music supplement', url: 'https://dl.thehistorymakers.org/catalog/f172789a4dc37f369b80927908b6ffe7' }],
+      },
+      {
+        date: '1904',
+        cat: 'hub',
+        title: '“The Southerners”',
+        people: ['Will Marion Cook'],
+        note: 'Billed as “The Unique Musical Romance,” a George W. Lederer production.',
+        items: [{ title: 'Cover sheet, song list', url: 'https://dl.thehistorymakers.org/catalog/aea3d8638cc04bff91ef63cc5997613d' }],
+      },
+      {
+        date: '1908',
+        cat: 'hub',
+        title: '“Bandanna Land”',
+        people: ['Will Marion Cook', 'Abbie Mitchell'],
+        note: 'Williams and Walker’s hit revue — the collection’s only sheet music crediting “Abbie Mitchell Cook” by her married name.',
+        items: [
+          { title: '“Red Red Rose,” sung by Abbie Mitchell Cook', url: 'https://dl.thehistorymakers.org/catalog/c235dfd8c41e772ba316f46da02fd69f' },
+          { title: '“Bon Bon Buddy, The Chocolate Drop”', url: 'https://dl.thehistorymakers.org/catalog/0f222f3444ec9c4bbd88cde483adfabd' },
+        ],
+      },
+      {
+        date: '1910',
+        cat: 'hub',
+        title: "Ziegfeld's “Follies of 1910”",
+        people: ['Will Marion Cook'],
+        items: [{ title: '“Lovie Joe”, Jardin de Paris', url: 'https://dl.thehistorymakers.org/catalog/657b331a310bd35a333b5d710321e647' }],
+      },
+      {
+        date: 'Oct 1910',
+        cat: 'hub',
+        title: '“Judy Forgot”',
+        people: ['Will Marion Cook', 'Marie Cahill'],
+        items: [{ title: "“Whoop 'er Up (With a Whoop La La)”", url: 'https://dl.thehistorymakers.org/catalog/0c5fdb14763eaa1b759110e551fe4387' }],
+      },
+      {
+        date: 'undated',
+        cat: 'hub',
+        title: 'Undated Cook editions',
+        people: ['Will Marion Cook', 'James Weldon Johnson', 'Marie Cahill'],
+        note: 'No production or date printed on either cover; grouped here rather than guessed at.',
+        items: [
+          { title: '“If the Sands of the Seas Were Pearls”, words by James Weldon Johnson', url: 'https://dl.thehistorymakers.org/catalog/32f176afb61d55f156c94fd012e2b6a5' },
+          { title: '“Wid de Moon, Moon, Moon”, sung by Marie Cahill (2 copies)', url: 'https://dl.thehistorymakers.org/catalog/4ba9c4f9f83219aae21ae0efa0da829d' },
+        ],
+      },
+    ],
+  },
+  {
+    label: '1935 – 1936',
+    title: 'The capstone',
+    events: [
+      {
+        date: '1935',
+        cat: 'capstone',
+        title: '“Porgy and Bess” sheet music',
+        people: ['George Gershwin'],
+        items: [
+          { title: 'Full score cover', url: 'https://dl.thehistorymakers.org/catalog/25e81db6b4067a0273776c1e105d9ee0' },
+          { title: '“Summertime”', url: 'https://dl.thehistorymakers.org/catalog/5c351775a373a55530bbe5699d5328c4' },
+          { title: '“Summertime,” arr. for female voices', url: 'https://dl.thehistorymakers.org/catalog/fdea1f13d4a4ca19e60f7aa3144e4b36' },
+        ],
+      },
+      {
+        date: 'Jan 27, 1936',
+        cat: 'capstone',
+        title: '“Porgy and Bess” — Forrest Theatre playbill',
+        people: ['George Gershwin', 'Abbie Mitchell'],
+        note: "The Theatre Guild's opening week. Mitchell plays Clara — by her own biography, her final and most celebrated stage role, thirty-eight years after Clorindy.",
+        items: [{ title: 'Opening-week playbill, full cast list', url: 'https://dl.thehistorymakers.org/catalog/63db0febd8ddd31aec7fcf3b8d84de27' }],
+      },
+    ],
+  },
+  {
+    label: '1939 – 1955',
+    title: 'After the curtain',
+    events: [
+      {
+        date: 'c. 1933–37',
+        cat: 'later',
+        title: 'Theatre Union, Civic Repertory Theatre',
+        people: [],
+        note: "The building's left-leaning resident company; the specific production isn't named on this cover.",
+        items: [{ title: 'Playbill', url: 'https://dl.thehistorymakers.org/catalog/ba967f93b7199b2100c84268937c92aa' }],
+      },
+      {
+        date: '1939',
+        cat: 'other',
+        title: '“The Little Foxes” — Chicago engagement',
+        people: ['Tallulah Bankhead'],
+        note: "Reviewer bylines (Ashton Stevens, Claudia Cassidy) place this at Chicago's Selwyn Theatre, not the Broadway original.",
+        items: [{ title: 'Playbill', url: 'https://dl.thehistorymakers.org/catalog/4b60bbcb40048ee3c40ec497e72ac208' }],
+      },
+      {
+        date: 'March 31, 1941',
+        cat: 'other',
+        title: '“The Little Foxes” — return engagement',
+        people: ['Tallulah Bankhead'],
+        note: 'A handwritten note dates a one-week return booking on this Playgoer magazine cover.',
+        items: [{ title: 'The Playgoer, magazine cover', url: 'https://dl.thehistorymakers.org/catalog/eb47db71043b1c1172cf45a5c2b82764' }],
+      },
+      {
+        date: '1946',
+        cat: 'later',
+        title: '“On Whitman Avenue”',
+        people: [],
+        note: "A returning Black veteran's fight to move into a white neighborhood; ran 148 performances at the Cort Theatre after Eleanor Roosevelt and Langston Hughes championed it.",
+        items: [{ title: 'Playbill, Cort Theatre', url: 'https://dl.thehistorymakers.org/catalog/99a0c124b568560e8a7b505aaf187ed6' }],
+      },
+      {
+        date: '1955',
+        cat: 'hub',
+        title: 'Sterling Brown / Will Marion Cook manuscript',
+        people: ['Will Marion Cook'],
+        note: "Handwritten, eleven years after Cook's death — lyricist Sterling Brown paired with Cook's music. Unfinished collaboration, or a memorial setting? Unresolved.",
+        items: [{ title: 'Manuscript page (2 copies)', url: 'https://dl.thehistorymakers.org/catalog/5c351775a373a55530bbe5699d5328c4' }],
+      },
+    ],
+  },
+];
+
+const totalEvents = eras.reduce((sum, era) => sum + era.events.length, 0);
+const countFor = (person: string) => eras.reduce((sum, era) => sum + era.events.filter((ev) => ev.people.includes(person)).length, 0);
 ---
 <Layout title="HistoryMakers Collection" description="The Toni Cook Bush Collection at The HistoryMakers Digital Library: 25 playbills and sheet music covers tracing Will Marion Cook and Abbie Mitchell's Broadway and vaudeville years.">
   <div class="wrap page-title">
@@ -68,6 +260,67 @@ const sheetMusic = [
   <div class="wrap">
     <section class="section">
       <p class="intro prose">Transcribed from the cover, or front page, of each of the 25 playbill and sheet music items in the <a href="https://dl.thehistorymakers.org/?f%5Bcollection%5D%5B%5D=Toni+Cook+Bush+Collection&view=list">Toni Cook Bush Collection</a> at The HistoryMakers Digital Library. Most of these trace Will Marion Cook's Broadway and vaudeville songwriting (<em>Bandanna Land</em>, <em>Clorindy</em>, <em>In Dahomey</em>) and the 1935/1936 stage run of <em>Porgy and Bess</em>; item-level catalog metadata is minimal, so titles, credits, and publishers below come from reading the scanned page itself.</p>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><h2>From <em>Clorindy</em> to <em>Catfish Row</em></h2></div>
+      <p class="lede">Nineteen of the playbills and sheet-music editions, set in order. Almost all trace one marriage &mdash; composer Will Marion Cook and singer Abbie Mitchell &mdash; from the cakewalk's Broadway debut in 1898 to Mitchell's final role, as Clara in the original <em>Porgy and Bess</em>.</p>
+
+      <div class="tl-legend" role="list" aria-label="Thread key">
+        <span class="tl-legend-item" role="listitem"><span class="tl-swatch" data-cat="hub"></span>Cook&ndash;Mitchell hub, 1898&ndash;1910s</span>
+        <span class="tl-legend-item" role="listitem"><span class="tl-swatch" data-cat="capstone"></span><em>Porgy and Bess</em> capstone, 1935&ndash;36</span>
+        <span class="tl-legend-item" role="listitem"><span class="tl-swatch" data-cat="later"></span>Later civic &amp; social-justice theater</span>
+        <span class="tl-legend-item" role="listitem"><span class="tl-swatch" data-cat="other"></span>Other Broadway memorabilia</span>
+      </div>
+
+      <div class="tl-filters">
+        <p class="rule-label">Trace a name through the collection</p>
+        <div class="tl-chip-row" id="tlChipRow" role="group" aria-label="Filter by person">
+          <button type="button" class="tl-chip" data-person="" aria-pressed="true">All <span class="tl-n">({totalEvents})</span></button>
+          {timelinePeople.map((p) => (
+            <button type="button" class="tl-chip" data-person={p} aria-pressed="false">{p} <span class="tl-n">({countFor(p)})</span></button>
+          ))}
+        </div>
+      </div>
+
+      <div class="tl-timeline" id="tlTimeline">
+        {eras.map((era) => (
+          <div class="tl-era">
+            <div class="tl-era-head">
+              <p class="tl-era-label">{era.label}</p>
+              <h3>{era.title}</h3>
+            </div>
+            {era.events.map((ev) => (
+              <article class="tl-event" data-cat={ev.cat} data-people={ev.people.join('|')}>
+                <div class="tl-event-top">
+                  <h4>{ev.title}</h4>
+                  <span class="tl-event-date">{ev.date}</span>
+                </div>
+                {ev.note && <p class="tl-event-note">{ev.note}</p>}
+                {ev.people.length > 0 && (
+                  <div class="tl-people">
+                    {ev.people.map((p) => (
+                      timelinePeople.includes(p)
+                        ? <button type="button" class="tl-tag" data-person={p}>{p}</button>
+                        : <span class="tl-tag tl-tag-static">{p}</span>
+                    ))}
+                  </div>
+                )}
+                <div class="tl-items">
+                  {ev.items.map((it) => (
+                    <div class="tl-item-row">
+                      <span class="tl-it-title">{it.title}</span>
+                      <a href={it.url} target="_blank" rel="noopener">View item &rarr;</a>
+                    </div>
+                  ))}
+                </div>
+              </article>
+            ))}
+          </div>
+        ))}
+      </div>
+
+      <p class="footnote">Dates not printed on the item itself are dated to the Broadway production they name, via Playbill Vault, IBDB, or Wikipedia, and marked "undated" where no production could be confirmed.</p>
     </section>
 
     <section class="section">
@@ -150,6 +403,39 @@ const sheetMusic = [
   </div>
 </Layout>
 
+<script>
+  const chipRow = document.getElementById('tlChipRow');
+  const timeline = document.getElementById('tlTimeline');
+  if (chipRow && timeline) {
+    let active: string | null = null;
+
+    const applyFilter = () => {
+      chipRow.querySelectorAll<HTMLButtonElement>('.tl-chip').forEach((chip) => {
+        chip.setAttribute('aria-pressed', String(chip.dataset.person === (active ?? '')));
+      });
+      timeline.querySelectorAll<HTMLElement>('.tl-event').forEach((card) => {
+        const people = (card.dataset.people || '').split('|').filter(Boolean);
+        card.classList.toggle('dim', Boolean(active) && !people.includes(active as string));
+      });
+    };
+
+    const setActive = (person: string) => {
+      active = active === person ? null : person || null;
+      applyFilter();
+    };
+
+    chipRow.addEventListener('click', (e) => {
+      const chip = (e.target as HTMLElement).closest<HTMLButtonElement>('.tl-chip');
+      if (chip) setActive(chip.dataset.person || '');
+    });
+
+    timeline.addEventListener('click', (e) => {
+      const tag = (e.target as HTMLElement).closest<HTMLButtonElement>('.tl-tag:not(.tl-tag-static)');
+      if (tag) setActive(tag.dataset.person || '');
+    });
+  }
+</script>
+
 <style>
   .intro { color: var(--ink-2); font-size: 16.5px; }
   .count { color: var(--gilt); font-size: .55em; margin-left: 6px; vertical-align: middle; }
@@ -164,6 +450,54 @@ const sheetMusic = [
   table.collection td:nth-child(3) { width: 38%; color: var(--ink-2); }
   table.collection td:last-child { white-space: nowrap; }
   .footnote { margin-top: 16px; font-size: 13.5px; color: var(--muted); max-width: var(--measure); }
+
+  /* Timeline */
+  .tl-legend { display: flex; flex-wrap: wrap; gap: 10px 20px; margin: 22px 0 0; padding-top: 18px; border-top: 1px solid var(--line); }
+  .tl-legend-item { display: flex; align-items: center; gap: 8px; font-size: 13.5px; color: var(--ink-2); }
+  .tl-swatch { width: 10px; height: 10px; border-radius: 50%; flex: none; }
+  .tl-swatch[data-cat="hub"] { background: var(--oxblood); }
+  .tl-swatch[data-cat="capstone"] { background: var(--gilt); }
+  .tl-swatch[data-cat="later"] { background: var(--fern); }
+  .tl-swatch[data-cat="other"] { background: var(--muted); }
+
+  .tl-filters { margin: 28px 0 32px; }
+  .tl-chip-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+  .tl-chip { font-family: var(--body); font-size: 13.5px; padding: 7px 14px; border-radius: 999px; border: 1px solid var(--line); background: var(--paper-2); color: var(--ink-2); cursor: pointer; transition: background .15s, color .15s, border-color .15s; }
+  .tl-chip:hover { border-color: var(--oxblood); color: var(--ink); }
+  .tl-chip[aria-pressed="true"] { background: var(--oxblood); border-color: var(--oxblood); color: var(--on-accent); }
+  .tl-n { opacity: .75; font-size: .85em; }
+
+  .tl-timeline { max-width: 74ch; }
+  .tl-era { position: relative; padding-left: 26px; border-left: 2px solid var(--line); }
+  .tl-era:last-child { border-left-color: transparent; padding-bottom: 0; }
+  .tl-era-head { margin-left: -26px; padding-left: 26px; position: relative; margin-bottom: 20px; }
+  .tl-era-head::before { content: ""; position: absolute; left: -5px; top: 8px; width: 10px; height: 10px; background: var(--gilt); border-radius: 50%; box-shadow: 0 0 0 4px var(--paper); }
+  .tl-era-label { font-size: 12px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--gilt); margin: 0 0 2px; }
+  .tl-era-head h3 { margin: 0; }
+
+  .tl-event { position: relative; background: var(--paper-2); border: 1px solid var(--line); padding: 16px 18px 18px; margin: 0 0 16px; transition: opacity .2s ease, filter .2s ease; }
+  .tl-event::before { content: ""; position: absolute; left: -31px; top: 22px; width: 8px; height: 8px; border-radius: 50%; background: var(--oxblood); box-shadow: 0 0 0 4px var(--paper); }
+  .tl-event[data-cat="capstone"]::before { background: var(--gilt); }
+  .tl-event[data-cat="later"]::before { background: var(--fern); }
+  .tl-event[data-cat="other"]::before { background: var(--muted); }
+  .tl-event.dim { opacity: .32; filter: saturate(.5); }
+
+  .tl-event-top { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 4px; }
+  .tl-event-top h4 { font-family: var(--display); font-weight: 500; font-size: 19px; margin: 0; line-height: 1.2; }
+  .tl-event-date { font-size: 12px; letter-spacing: .04em; color: var(--muted); white-space: nowrap; }
+  .tl-event-note { font-size: 14.5px; color: var(--ink-2); margin: 6px 0 10px; max-width: 58ch; }
+
+  .tl-people { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .tl-tag { font-family: var(--body); font-size: 12px; padding: 3px 10px; border-radius: 999px; background: var(--tint-ox); color: var(--oxblood); border: none; cursor: pointer; }
+  .tl-tag:hover { text-decoration: underline; }
+  .tl-tag-static { cursor: default; }
+  .tl-tag-static:hover { text-decoration: none; }
+
+  .tl-items { border-top: 1px solid var(--line); padding-top: 10px; display: flex; flex-direction: column; gap: 6px; }
+  .tl-item-row { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; font-size: 14px; }
+  .tl-item-row .tl-it-title { color: var(--ink); }
+  .tl-item-row a { white-space: nowrap; font-size: 13px; }
+  @media (max-width: 480px) { .tl-item-row { flex-direction: column; gap: 2px; } }
   ol.themes { max-width: 74ch; counter-reset: theme; list-style: none; padding-left: 0; }
   ol.themes li { position: relative; padding-left: 40px; margin-bottom: 18px; }
   ol.themes li::before { counter-increment: theme; content: counter(theme); position: absolute; left: 0; top: .05em; font-family: var(--display); color: var(--gilt); font-size: 18px; }
