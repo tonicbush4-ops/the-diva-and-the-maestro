@@ -1,6 +1,34 @@
 ---
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+import imgOnWhitman from '../assets/archive/historymakers/on-whitman-avenue-1946.jpg';
+import imgLittleFoxesPlaygoer from '../assets/archive/historymakers/little-foxes-playgoer-1939.jpg';
+import imgPorgyPlaybill from '../assets/archive/historymakers/porgy-and-bess-forrest-playbill-1936.jpg';
+import imgTheatreUnion from '../assets/archive/historymakers/theatre-union.jpg';
+import imgLittleFoxesHellman from '../assets/archive/historymakers/little-foxes-hellman-1939.jpg';
+import imgRedRedRose from '../assets/archive/historymakers/red-red-rose.jpg';
+import imgBonBonBuddy from '../assets/archive/historymakers/bon-bon-buddy-hm-1907.jpg';
+import imgGoodEvenin from '../assets/archive/historymakers/good-evenin-1903.jpg';
+import imgPorgyFullScore from '../assets/archive/historymakers/porgy-and-bess-full-score-1935.jpg';
+import imgLovieJoe from '../assets/archive/historymakers/lovie-joe-1910.jpg';
+import imgLittleGypsyMaid from '../assets/archive/historymakers/little-gypsy-maid.jpg';
+import imgSterlingBrown1 from '../assets/archive/historymakers/sterling-brown-manuscript-1955.jpg';
+import imgSterlingBrown2 from '../assets/archive/historymakers/sterling-brown-manuscript-1955-2.jpg';
+import imgReturned from '../assets/archive/historymakers/returned-1902.jpg';
+import imgWhoopErUp from '../assets/archive/historymakers/whoop-er-up-1910.jpg';
+import imgSummerTimeSSA from '../assets/archive/historymakers/summer-time-ssa.jpg';
+import imgWidDeMoon1 from '../assets/archive/historymakers/wid-de-moon-moon-moon.jpg';
+import imgSandsOfSeas from '../assets/archive/historymakers/if-the-sands-of-the-seas.jpg';
+import imgWidDeMoon2 from '../assets/archive/historymakers/wid-de-moon-moon-moon-2.jpg';
+import imgSoutherners from '../assets/archive/historymakers/the-southerners-1904.jpg';
+import imgDeyllBeWahin from '../assets/archive/historymakers/deyll-be-wahin.jpg';
+import imgDarktown from '../assets/archive/historymakers/darktown-is-out-tonight-hm-1898.jpg';
+import imgEmancipationDay from '../assets/archive/historymakers/on-emancipation-day-1902.jpg';
+import imgParthenia from '../assets/archive/historymakers/parthenia-johnsing-1902.jpg';
+import imgCasinoGirl from '../assets/archive/historymakers/casino-girl-songs.jpg';
 
 const playbills = [
   {
@@ -8,55 +36,89 @@ const playbills = [
     credits: '(cover only, cast not shown on front)',
     notes: 'The Cort Theatre',
     href: 'https://dl.thehistorymakers.org/catalog/99a0c124b568560e8a7b505aaf187ed6',
+    image: imgOnWhitman,
   },
   {
     production: 'The Little Foxes, cover of The Playgoer magazine',
     credits: 'Tallulah Bankhead, photo cover',
     notes: "Forrest Theatre; handwritten note dates a return engagement: Little Foxes - Forrest - March 31, 1941 - 1 week (Tallulah Bankhead - return)",
     href: 'https://dl.thehistorymakers.org/catalog/eb47db71043b1c1172cf45a5c2b82764',
+    image: imgLittleFoxesPlaygoer,
   },
   {
     production: 'Porgy and Bess, An American Folk Opera',
     credits: "Music by George Gershwin; libretto by DuBose Heyward; lyrics by DuBose Heyward and Ira Gershwin; directed by Rouben Mamoulian; settings by Sergei Soudeikine; orchestra conducted by Alexander Steinert. Cast includes Todd Duncan (Porgy), Anne Brown (Bess), John W. Bubbles (Sportin' Life), Ruby Elzy (Serena), J. Rosamond Johnson (Frazier), and the Eva Jessye Choir",
     notes: 'Forrest Theatre; The Theatre Guild, Fifth Subscription Play, American Theatre Society; opened Monday evening, January 27, 1936; matinees Thursday and Saturday',
     href: 'https://dl.thehistorymakers.org/catalog/63db0febd8ddd31aec7fcf3b8d84de27',
+    image: imgPorgyPlaybill,
   },
   {
     production: 'The Theatre Union (untitled production on this cover)',
     credits: 'none shown',
     notes: 'Civic Repertory Theatre',
     href: 'https://dl.thehistorymakers.org/catalog/ba967f93b7199b2100c84268937c92aa',
+    image: imgTheatreUnion,
   },
   {
     production: 'The Little Foxes by Lillian Hellman',
     credits: 'Herman Shumlin presents Tallulah Bankhead, with Patricia Collinge and Frank Conroy; reviewer quotes from Cecil Smith (Tribune), Ashton Stevens (Herald-American), Lloyd Lewis (News), Claudia Cassidy (Journal of Commerce), Robert Pollak (Times) — bylines place this at Chicago’s Selwyn Theatre, not the Broadway original',
     notes: 'Selwyn Theatre; matinees Wednesday and Saturday',
     href: 'https://dl.thehistorymakers.org/catalog/4b60bbcb40048ee3c40ec497e72ac208',
+    image: imgLittleFoxesHellman,
   },
 ];
 
 const sheetMusic = [
-  { title: 'Red Red Rose', credits: 'Words Alex Rogers, Music Will Marion Cook', notes: "As sung by Abbie Mitchell Cook in Williams and Walker's Bandanna Land. Pub. Shapiro Music Publisher, NY", href: 'https://dl.thehistorymakers.org/catalog/c235dfd8c41e772ba316f46da02fd69f' },
-  { title: 'Bon Bon Buddy, The Chocolate Drop', credits: 'Words Alex Rogers, Music Will Marion Cook', notes: 'Introduced by Geo. W. Walker in Williams & Walker’s Bandanna Land. Pub. The Gotham-Attucks Music Co., NY', href: 'https://dl.thehistorymakers.org/catalog/0f222f3444ec9c4bbd88cde483adfabd' },
-  { title: 'Good Evenin’ ("A Real Native Southern Negro Melody")', credits: 'Paul Laurence Dunbar and Will Marion Cook', notes: 'Music Supplement of the N.Y. American and Journal, Sunday, March 22, 1903, pages 5-8. Pub. by permission of Harry Von Tilzer Music Publishing Co.', href: 'https://dl.thehistorymakers.org/catalog/f172789a4dc37f369b80927908b6ffe7' },
-  { title: 'Porgy and Bess (full score cover)', credits: 'Music George Gershwin', notes: 'Gershwin Publishing Corp., New York; Chappell & Co. Inc., sole selling agent', href: 'https://dl.thehistorymakers.org/catalog/25e81db6b4067a0273776c1e105d9ee0' },
-  { title: 'Lovie Joe', credits: 'Words Will Marion Cook, Music Joe Jordan', notes: "Jardin de Paris, Ziegfeld Revue, Follies of 1910, staged by Julian Mitchell. Pub. Harry Von Tilzer Music Publishing Co.", href: 'https://dl.thehistorymakers.org/catalog/657b331a310bd35a333b5d710321e647' },
-  { title: 'The Little Gypsy Maid / What Would You Be A-Doing / She Did-It All Herself (3 songs, one cover)', credits: 'Words Harry B. Smith and Cecil Mack, Music Will Marion Cook', notes: "From George W. Lederer's production of The Wild Rose. Sole selling agents Harry Von Tilzer Music Publishing Co.", href: 'https://dl.thehistorymakers.org/catalog/0119cf3b8d44392f2a454fcea74e2cbe' },
-  { title: 'Handwritten manuscript page', credits: 'Lyrics by Sterling Brown, Music by Will M. Cook', notes: 'Marginal note reads "Sterling Br[own]... 1955"; also marked "Louisa V.N."', href: 'https://dl.thehistorymakers.org/catalog/5c351775a373a55530bbe5699d5328c4' },
-  { title: 'Handwritten manuscript page (second copy)', credits: 'Lyrics by Sterling Brown, Music by Will M. Cook', notes: 'Same note as above; appears to be a duplicate scan', href: 'https://dl.thehistorymakers.org/catalog/31f4892364eb8744bb4ad3ddd136fece' },
-  { title: 'Returned ("A Negro Ballad")', credits: 'Composer Will Marion Cook', notes: "As sung by Miss Abbie Mitchell at Mrs. Cornelius Vanderbilt's Newport Theatre Party. Music Supplement of the N.Y. American and Journal, Sunday, Sept. 21, 1902, pages 5-8", href: 'https://dl.thehistorymakers.org/catalog/7f8c128f723cc355e2a5b130afa5add5' },
-  { title: "Whoop 'er Up (With a Whoop La La)", credits: 'Words Andrew B. Sterling, Music Will Marion Cook', notes: "Sung by Marie Cahill in Daniel V. Arthur's musical comedy Judy Forgot (opened Oct. 6, 1910). Pub. Harry Von Tilzer Music Publishing Co.", href: 'https://dl.thehistorymakers.org/catalog/0c5fdb14763eaa1b759110e551fe4387' },
-  { title: 'Summer Time (arr. for Female Voices, S.S.A.)', credits: 'Music George Gershwin, Lyrics DuBose Heyward', notes: 'From Porgy and Bess. Price 20 cents. Gershwin Publishing Corp.', href: 'https://dl.thehistorymakers.org/catalog/fdea1f13d4a4ca19e60f7aa3144e4b36' },
-  { title: 'Wid de Moon, Moon, Moon ("Negro Love-Song")', credits: 'Music Will Marion Cook, Words William Moore', notes: 'As sung by Marie Cahill. 60 cents. New York: G. Schirmer; Boston: The Boston Music Co.; London: Schott & Co.', href: 'https://dl.thehistorymakers.org/catalog/4ba9c4f9f83219aae21ae0efa0da829d' },
-  { title: 'If the Sands of the Seas Were Pearls (Operatic Edition)', credits: 'Words James Weldon Johnson, Music Will Marion [Cook]', notes: 'Pub. Jerome H. Remick & Co., New York / Detroit', href: 'https://dl.thehistorymakers.org/catalog/32f176afb61d55f156c94fd012e2b6a5' },
-  { title: 'Wid de Moon, Moon, Moon (second copy)', credits: 'Music Will Marion Cook, Words William Moore', notes: 'Same edition as above', href: 'https://dl.thehistorymakers.org/catalog/9df95be630e8ccdc8dde3df5e25a37ca' },
-  { title: 'The Southerners ("The Unique Musical Romance")', credits: 'Libretto & Lyrics Richard Grant and Will Mercer, Music Will Marion Cook', notes: 'Geo. W. Lederer production (1904). Pub. John H. Cook Pub. Co.; distributed by The York Music Co., NY', href: 'https://dl.thehistorymakers.org/catalog/aea3d8638cc04bff91ef63cc5997613d' },
-  { title: "Dey'll Be Wahin' / Coons a Prancin' (finale from Clorindy)", credits: 'Paul Laurence Dunbar and Will Marion [Cook]', notes: 'As sung at The Orpheum. Musical Supplement of the Sunday Examiner. Photos by Bushnell (Marie Sharp, Emelie M. Frank, James Smith)', href: 'https://dl.thehistorymakers.org/catalog/49dc1b50903859608fc151f1dcffea39' },
-  { title: 'Darktown Is Out To-Night (Cake Walk Song and Chorus)', credits: 'Words and Music Will Marion [Cook]', notes: "Introduced in E.E. Rice's Summer Nights; from Clorindy, or The Origin of the Cake Walk (Dunbar & Marion), 1898. Pub. M. Witmark & Sons, New York / Chicago", href: 'https://dl.thehistorymakers.org/catalog/c11963e964a199520ef1c0c5bb647cb5' },
-  { title: 'On Emancipation Day (March and March Song)', credits: 'Words Paul Laurence Dunbar, Music Will Marion Cook', notes: '1902. Billed with Dark Town, Who Dat Say Chicken, Lovers Lane. Sole selling agents Harry Von Tilzer Music Publishing Co.', href: 'https://dl.thehistorymakers.org/catalog/221729cc2ef0d10b5a165c9a1ef9f890' },
-  { title: 'Parthenia Johnsing ("A New Negro Melody")', credits: 'Music Will Marion Cook', notes: 'As sung by Abbie Mitchell. Music Supplement of the New York American and Journal, Sunday, Dec. 21, 1902, pages 5-8', href: 'https://dl.thehistorymakers.org/catalog/eb247131b2ec9cd9a7e770c5174bb88c' },
-  { title: 'Songs from The Casino Girl (4 songs, one cover: Down De Lovers Lane, Romance, Whatever The Hue Of Your Eyes, By-Gone Days Are Best)', credits: 'Words Paul L. Dunbar / Harry B. Smith / L. Lamprey, Music Will Marion Cook', notes: 'Direction of George Lederer, 1900–01. Pub. Jos. W. Stern & Co., New York / Chicago / London', href: 'https://dl.thehistorymakers.org/catalog/01ec14efca2a56b9336f4491032b0963' },
+  { title: 'Red Red Rose', credits: 'Words Alex Rogers, Music Will Marion Cook', notes: "As sung by Abbie Mitchell Cook in Williams and Walker's Bandanna Land. Pub. Shapiro Music Publisher, NY", href: 'https://dl.thehistorymakers.org/catalog/c235dfd8c41e772ba316f46da02fd69f', image: imgRedRedRose },
+  { title: 'Bon Bon Buddy, The Chocolate Drop', credits: 'Words Alex Rogers, Music Will Marion Cook', notes: 'Introduced by Geo. W. Walker in Williams & Walker’s Bandanna Land. Pub. The Gotham-Attucks Music Co., NY', href: 'https://dl.thehistorymakers.org/catalog/0f222f3444ec9c4bbd88cde483adfabd', image: imgBonBonBuddy },
+  { title: 'Good Evenin’ ("A Real Native Southern Negro Melody")', credits: 'Paul Laurence Dunbar and Will Marion Cook', notes: 'Music Supplement of the N.Y. American and Journal, Sunday, March 22, 1903, pages 5-8. Pub. by permission of Harry Von Tilzer Music Publishing Co.', href: 'https://dl.thehistorymakers.org/catalog/f172789a4dc37f369b80927908b6ffe7', image: imgGoodEvenin },
+  { title: 'Porgy and Bess (full score cover)', credits: 'Music George Gershwin', notes: 'Gershwin Publishing Corp., New York; Chappell & Co. Inc., sole selling agent', href: 'https://dl.thehistorymakers.org/catalog/25e81db6b4067a0273776c1e105d9ee0', image: imgPorgyFullScore },
+  { title: 'Lovie Joe', credits: 'Words Will Marion Cook, Music Joe Jordan', notes: "Jardin de Paris, Ziegfeld Revue, Follies of 1910, staged by Julian Mitchell. Pub. Harry Von Tilzer Music Publishing Co.", href: 'https://dl.thehistorymakers.org/catalog/657b331a310bd35a333b5d710321e647', image: imgLovieJoe },
+  { title: 'The Little Gypsy Maid / What Would You Be A-Doing / She Did-It All Herself (3 songs, one cover)', credits: 'Words Harry B. Smith and Cecil Mack, Music Will Marion Cook', notes: "From George W. Lederer's production of The Wild Rose. Sole selling agents Harry Von Tilzer Music Publishing Co.", href: 'https://dl.thehistorymakers.org/catalog/0119cf3b8d44392f2a454fcea74e2cbe', image: imgLittleGypsyMaid },
+  { title: 'Handwritten manuscript page', credits: 'Lyrics by Sterling Brown, Music by Will M. Cook', notes: 'Marginal note reads "Sterling Br[own]... 1955"; also marked "Louisa V.N."', href: 'https://dl.thehistorymakers.org/catalog/5c351775a373a55530bbe5699d5328c4', image: imgSterlingBrown1 },
+  { title: 'Handwritten manuscript page (second copy)', credits: 'Lyrics by Sterling Brown, Music by Will M. Cook', notes: 'Same note as above; appears to be a duplicate scan', href: 'https://dl.thehistorymakers.org/catalog/31f4892364eb8744bb4ad3ddd136fece', image: imgSterlingBrown2 },
+  { title: 'Returned ("A Negro Ballad")', credits: 'Composer Will Marion Cook', notes: "As sung by Miss Abbie Mitchell at Mrs. Cornelius Vanderbilt's Newport Theatre Party. Music Supplement of the N.Y. American and Journal, Sunday, Sept. 21, 1902, pages 5-8", href: 'https://dl.thehistorymakers.org/catalog/7f8c128f723cc355e2a5b130afa5add5', image: imgReturned },
+  { title: "Whoop 'er Up (With a Whoop La La)", credits: 'Words Andrew B. Sterling, Music Will Marion Cook', notes: "Sung by Marie Cahill in Daniel V. Arthur's musical comedy Judy Forgot (opened Oct. 6, 1910). Pub. Harry Von Tilzer Music Publishing Co.", href: 'https://dl.thehistorymakers.org/catalog/0c5fdb14763eaa1b759110e551fe4387', image: imgWhoopErUp },
+  { title: 'Summer Time (arr. for Female Voices, S.S.A.)', credits: 'Music George Gershwin, Lyrics DuBose Heyward', notes: 'From Porgy and Bess. Price 20 cents. Gershwin Publishing Corp.', href: 'https://dl.thehistorymakers.org/catalog/fdea1f13d4a4ca19e60f7aa3144e4b36', image: imgSummerTimeSSA },
+  { title: 'Wid de Moon, Moon, Moon ("Negro Love-Song")', credits: 'Music Will Marion Cook, Words William Moore', notes: 'As sung by Marie Cahill. 60 cents. New York: G. Schirmer; Boston: The Boston Music Co.; London: Schott & Co.', href: 'https://dl.thehistorymakers.org/catalog/4ba9c4f9f83219aae21ae0efa0da829d', image: imgWidDeMoon1 },
+  { title: 'If the Sands of the Seas Were Pearls (Operatic Edition)', credits: 'Words James Weldon Johnson, Music Will Marion [Cook]', notes: 'Pub. Jerome H. Remick & Co., New York / Detroit', href: 'https://dl.thehistorymakers.org/catalog/32f176afb61d55f156c94fd012e2b6a5', image: imgSandsOfSeas },
+  { title: 'Wid de Moon, Moon, Moon (second copy)', credits: 'Music Will Marion Cook, Words William Moore', notes: 'Same edition as above', href: 'https://dl.thehistorymakers.org/catalog/9df95be630e8ccdc8dde3df5e25a37ca', image: imgWidDeMoon2 },
+  { title: 'The Southerners ("The Unique Musical Romance")', credits: 'Libretto & Lyrics Richard Grant and Will Mercer, Music Will Marion Cook', notes: 'Geo. W. Lederer production (1904). Pub. John H. Cook Pub. Co.; distributed by The York Music Co., NY', href: 'https://dl.thehistorymakers.org/catalog/aea3d8638cc04bff91ef63cc5997613d', image: imgSoutherners },
+  { title: "Dey'll Be Wahin' / Coons a Prancin' (finale from Clorindy)", credits: 'Paul Laurence Dunbar and Will Marion [Cook]', notes: 'As sung at The Orpheum. Musical Supplement of the Sunday Examiner. Photos by Bushnell (Marie Sharp, Emelie M. Frank, James Smith)', href: 'https://dl.thehistorymakers.org/catalog/49dc1b50903859608fc151f1dcffea39', image: imgDeyllBeWahin },
+  { title: 'Darktown Is Out To-Night (Cake Walk Song and Chorus)', credits: 'Words and Music Will Marion [Cook]', notes: "Introduced in E.E. Rice's Summer Nights; from Clorindy, or The Origin of the Cake Walk (Dunbar & Marion), 1898. Pub. M. Witmark & Sons, New York / Chicago", href: 'https://dl.thehistorymakers.org/catalog/c11963e964a199520ef1c0c5bb647cb5', image: imgDarktown },
+  { title: 'On Emancipation Day (March and March Song)', credits: 'Words Paul Laurence Dunbar, Music Will Marion Cook', notes: '1902. Billed with Dark Town, Who Dat Say Chicken, Lovers Lane. Sole selling agents Harry Von Tilzer Music Publishing Co.', href: 'https://dl.thehistorymakers.org/catalog/221729cc2ef0d10b5a165c9a1ef9f890', image: imgEmancipationDay },
+  { title: 'Parthenia Johnsing ("A New Negro Melody")', credits: 'Music Will Marion Cook', notes: 'As sung by Abbie Mitchell. Music Supplement of the New York American and Journal, Sunday, Dec. 21, 1902, pages 5-8', href: 'https://dl.thehistorymakers.org/catalog/eb247131b2ec9cd9a7e770c5174bb88c', image: imgParthenia },
+  { title: 'Songs from The Casino Girl (4 songs, one cover: Down De Lovers Lane, Romance, Whatever The Hue Of Your Eyes, By-Gone Days Are Best)', credits: 'Words Paul L. Dunbar / Harry B. Smith / L. Lamprey, Music Will Marion Cook', notes: 'Direction of George Lederer, 1900–01. Pub. Jos. W. Stern & Co., New York / Chicago / London', href: 'https://dl.thehistorymakers.org/catalog/01ec14efca2a56b9336f4491032b0963', image: imgCasinoGirl },
 ];
+
+const imagesById: Record<string, ImageMetadata> = {
+  '99a0c124b568560e8a7b505aaf187ed6': imgOnWhitman,
+  'eb47db71043b1c1172cf45a5c2b82764': imgLittleFoxesPlaygoer,
+  '63db0febd8ddd31aec7fcf3b8d84de27': imgPorgyPlaybill,
+  'ba967f93b7199b2100c84268937c92aa': imgTheatreUnion,
+  '4b60bbcb40048ee3c40ec497e72ac208': imgLittleFoxesHellman,
+  'c235dfd8c41e772ba316f46da02fd69f': imgRedRedRose,
+  '0f222f3444ec9c4bbd88cde483adfabd': imgBonBonBuddy,
+  'f172789a4dc37f369b80927908b6ffe7': imgGoodEvenin,
+  '25e81db6b4067a0273776c1e105d9ee0': imgPorgyFullScore,
+  '657b331a310bd35a333b5d710321e647': imgLovieJoe,
+  '0119cf3b8d44392f2a454fcea74e2cbe': imgLittleGypsyMaid,
+  '5c351775a373a55530bbe5699d5328c4': imgSterlingBrown1,
+  '31f4892364eb8744bb4ad3ddd136fece': imgSterlingBrown2,
+  '7f8c128f723cc355e2a5b130afa5add5': imgReturned,
+  '0c5fdb14763eaa1b759110e551fe4387': imgWhoopErUp,
+  'fdea1f13d4a4ca19e60f7aa3144e4b36': imgSummerTimeSSA,
+  '4ba9c4f9f83219aae21ae0efa0da829d': imgWidDeMoon1,
+  '32f176afb61d55f156c94fd012e2b6a5': imgSandsOfSeas,
+  '9df95be630e8ccdc8dde3df5e25a37ca': imgWidDeMoon2,
+  'aea3d8638cc04bff91ef63cc5997613d': imgSoutherners,
+  '49dc1b50903859608fc151f1dcffea39': imgDeyllBeWahin,
+  'c11963e964a199520ef1c0c5bb647cb5': imgDarktown,
+  '221729cc2ef0d10b5a165c9a1ef9f890': imgEmancipationDay,
+  'eb247131b2ec9cd9a7e770c5174bb88c': imgParthenia,
+  '01ec14efca2a56b9336f4491032b0963': imgCasinoGirl,
+};
+const imageFor = (url: string) => imagesById[url.split('/').pop() as string];
 
 const timelinePeople = ['Will Marion Cook', 'Abbie Mitchell', 'Paul Laurence Dunbar', 'George Gershwin', 'Tallulah Bankhead', 'Marie Cahill'];
 
@@ -309,8 +371,11 @@ const countFor = (person: string) => eras.reduce((sum, era) => sum + era.events.
                 <div class="tl-items">
                   {ev.items.map((it) => (
                     <div class="tl-item-row">
+                      <a href={it.url} target="_blank" rel="noopener" class="tl-item-thumb">
+                        <Image src={imageFor(it.url)} alt={it.title} width={56} />
+                      </a>
                       <span class="tl-it-title">{it.title}</span>
-                      <a href={it.url} target="_blank" rel="noopener">View item &rarr;</a>
+                      <a href={it.url} target="_blank" rel="noopener" class="tl-item-link">View item &rarr;</a>
                     </div>
                   ))}
                 </div>
@@ -329,11 +394,16 @@ const countFor = (person: string) => eras.reduce((sum, era) => sum + era.events.
       <div class="table-scroll">
         <table class="collection">
           <thead>
-            <tr><th>Production</th><th>Key credits</th><th>Venue / notes</th><th>Source</th></tr>
+            <tr><th class="thumb-col"></th><th>Production</th><th>Key credits</th><th>Venue / notes</th><th>Source</th></tr>
           </thead>
           <tbody>
             {playbills.map((row) => (
               <tr>
+                <td class="thumb-col">
+                  <a href={row.href} target="_blank" rel="noopener" class="cover-thumb">
+                    <Image src={row.image} alt={row.production} width={70} />
+                  </a>
+                </td>
                 <td class="prod">{row.production}</td>
                 <td>{row.credits}</td>
                 <td>{row.notes}</td>
@@ -352,11 +422,16 @@ const countFor = (person: string) => eras.reduce((sum, era) => sum + era.events.
       <div class="table-scroll">
         <table class="collection">
           <thead>
-            <tr><th>Title</th><th>Words / Music</th><th>Production / publisher</th><th>Source</th></tr>
+            <tr><th class="thumb-col"></th><th>Title</th><th>Words / Music</th><th>Production / publisher</th><th>Source</th></tr>
           </thead>
           <tbody>
             {sheetMusic.map((row) => (
               <tr>
+                <td class="thumb-col">
+                  <a href={row.href} target="_blank" rel="noopener" class="cover-thumb">
+                    <Image src={row.image} alt={row.title} width={70} />
+                  </a>
+                </td>
                 <td class="prod">{row.title}</td>
                 <td>{row.credits}</td>
                 <td>{row.notes}</td>
@@ -446,9 +521,13 @@ const countFor = (person: string) => eras.reduce((sum, era) => sum + era.events.
   table.collection th, table.collection td { text-align: left; vertical-align: top; padding: 12px 16px 12px 0; border-bottom: 1px solid var(--line); }
   table.collection th { font-family: var(--body); font-size: 11.5px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
   table.collection td.prod { font-family: var(--display); font-size: 15.5px; color: var(--ink); width: 26%; }
-  table.collection td:nth-child(2) { width: 24%; color: var(--ink-2); }
-  table.collection td:nth-child(3) { width: 38%; color: var(--ink-2); }
+  table.collection td:nth-child(3) { width: 24%; color: var(--ink-2); }
+  table.collection td:nth-child(4) { width: 34%; color: var(--ink-2); }
   table.collection td:last-child { white-space: nowrap; }
+  .thumb-col { width: 56px; padding-right: 12px !important; }
+  .cover-thumb { display: block; width: 56px; border: 1px solid var(--line); background: var(--paper); }
+  .cover-thumb :global(img) { display: block; width: 100%; height: auto; }
+  .cover-thumb:hover { border-color: var(--oxblood); }
   .footnote { margin-top: 16px; font-size: 13.5px; color: var(--muted); max-width: var(--measure); }
 
   /* Timeline */
@@ -493,11 +572,14 @@ const countFor = (person: string) => eras.reduce((sum, era) => sum + era.events.
   .tl-tag-static { cursor: default; }
   .tl-tag-static:hover { text-decoration: none; }
 
-  .tl-items { border-top: 1px solid var(--line); padding-top: 10px; display: flex; flex-direction: column; gap: 6px; }
-  .tl-item-row { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; font-size: 14px; }
-  .tl-item-row .tl-it-title { color: var(--ink); }
-  .tl-item-row a { white-space: nowrap; font-size: 13px; }
-  @media (max-width: 480px) { .tl-item-row { flex-direction: column; gap: 2px; } }
+  .tl-items { border-top: 1px solid var(--line); padding-top: 10px; display: flex; flex-direction: column; gap: 10px; }
+  .tl-item-row { display: flex; align-items: center; gap: 10px; font-size: 14px; }
+  .tl-item-thumb { flex: none; display: block; width: 40px; border: 1px solid var(--line); background: var(--paper); }
+  .tl-item-thumb :global(img) { display: block; width: 100%; height: auto; }
+  .tl-item-thumb:hover { border-color: var(--oxblood); }
+  .tl-item-row .tl-it-title { color: var(--ink); flex: 1; }
+  .tl-item-row .tl-item-link { white-space: nowrap; font-size: 13px; flex: none; }
+  @media (max-width: 480px) { .tl-item-row { flex-wrap: wrap; } .tl-item-row .tl-item-link { margin-left: 50px; } }
   ol.themes { max-width: 74ch; counter-reset: theme; list-style: none; padding-left: 0; }
   ol.themes li { position: relative; padding-left: 40px; margin-bottom: 18px; }
   ol.themes li::before { counter-increment: theme; content: counter(theme); position: absolute; left: 0; top: .05em; font-family: var(--display); color: var(--gilt); font-size: 18px; }
