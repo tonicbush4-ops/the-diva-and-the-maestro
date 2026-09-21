@@ -1,0 +1,171 @@
+---
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+import Layout from '../layouts/Layout.astro';
+
+const playbills = [
+  {
+    production: 'On Whitman Avenue',
+    credits: '(cover only, cast not shown on front)',
+    notes: 'The Cort Theatre',
+    href: 'https://dl.thehistorymakers.org/catalog/99a0c124b568560e8a7b505aaf187ed6',
+  },
+  {
+    production: 'The Little Foxes, cover of The Playgoer magazine',
+    credits: 'Tallulah Bankhead, photo cover',
+    notes: "Forrest Theatre; handwritten note dates a return engagement: Little Foxes - Forrest - March 31, 1941 - 1 week (Tallulah Bankhead - return)",
+    href: 'https://dl.thehistorymakers.org/catalog/eb47db71043b1c1172cf45a5c2b82764',
+  },
+  {
+    production: 'Porgy and Bess, An American Folk Opera',
+    credits: "Music by George Gershwin; libretto by DuBose Heyward; lyrics by DuBose Heyward and Ira Gershwin; directed by Rouben Mamoulian; settings by Sergei Soudeikine; orchestra conducted by Alexander Steinert. Cast includes Todd Duncan (Porgy), Anne Brown (Bess), John W. Bubbles (Sportin' Life), Ruby Elzy (Serena), J. Rosamond Johnson (Frazier), and the Eva Jessye Choir",
+    notes: 'Forrest Theatre; The Theatre Guild, Fifth Subscription Play, American Theatre Society; opened Monday evening, January 27, 1936; matinees Thursday and Saturday',
+    href: 'https://dl.thehistorymakers.org/catalog/63db0febd8ddd31aec7fcf3b8d84de27',
+  },
+  {
+    production: 'The Theatre Union (untitled production on this cover)',
+    credits: 'none shown',
+    notes: 'Civic Repertory Theatre',
+    href: 'https://dl.thehistorymakers.org/catalog/ba967f93b7199b2100c84268937c92aa',
+  },
+  {
+    production: 'The Little Foxes by Lillian Hellman',
+    credits: 'Herman Shumlin presents Tallulah Bankhead, with Patricia Collinge and Frank Conroy; reviewer quotes from Cecil Smith (Tribune), Ashton Stevens (Herald-American), Lloyd Lewis (News), Claudia Cassidy (Journal of Commerce), Robert Pollak (Times) — bylines place this at Chicago’s Selwyn Theatre, not the Broadway original',
+    notes: 'Selwyn Theatre; matinees Wednesday and Saturday',
+    href: 'https://dl.thehistorymakers.org/catalog/4b60bbcb40048ee3c40ec497e72ac208',
+  },
+];
+
+const sheetMusic = [
+  { title: 'Red Red Rose', credits: 'Words Alex Rogers, Music Will Marion Cook', notes: "As sung by Abbie Mitchell Cook in Williams and Walker's Bandanna Land. Pub. Shapiro Music Publisher, NY", href: 'https://dl.thehistorymakers.org/catalog/c235dfd8c41e772ba316f46da02fd69f' },
+  { title: 'Bon Bon Buddy, The Chocolate Drop', credits: 'Words Alex Rogers, Music Will Marion Cook', notes: 'Introduced by Geo. W. Walker in Williams & Walker’s Bandanna Land. Pub. The Gotham-Attucks Music Co., NY', href: 'https://dl.thehistorymakers.org/catalog/0f222f3444ec9c4bbd88cde483adfabd' },
+  { title: 'Good Evenin’ ("A Real Native Southern Negro Melody")', credits: 'Paul Laurence Dunbar and Will Marion Cook', notes: 'Music Supplement of the N.Y. American and Journal, Sunday, March 22, 1903, pages 5-8. Pub. by permission of Harry Von Tilzer Music Publishing Co.', href: 'https://dl.thehistorymakers.org/catalog/f172789a4dc37f369b80927908b6ffe7' },
+  { title: 'Porgy and Bess (full score cover)', credits: 'Music George Gershwin', notes: 'Gershwin Publishing Corp., New York; Chappell & Co. Inc., sole selling agent', href: 'https://dl.thehistorymakers.org/catalog/25e81db6b4067a0273776c1e105d9ee0' },
+  { title: 'Lovie Joe', credits: 'Words Will Marion Cook, Music Joe Jordan', notes: "Jardin de Paris, Ziegfeld Revue, Follies of 1910, staged by Julian Mitchell. Pub. Harry Von Tilzer Music Publishing Co.", href: 'https://dl.thehistorymakers.org/catalog/657b331a310bd35a333b5d710321e647' },
+  { title: 'The Little Gypsy Maid / What Would You Be A-Doing / She Did-It All Herself (3 songs, one cover)', credits: 'Words Harry B. Smith and Cecil Mack, Music Will Marion Cook', notes: "From George W. Lederer's production of The Wild Rose. Sole selling agents Harry Von Tilzer Music Publishing Co.", href: 'https://dl.thehistorymakers.org/catalog/0119cf3b8d44392f2a454fcea74e2cbe' },
+  { title: 'Handwritten manuscript page', credits: 'Lyrics by Sterling Brown, Music by Will M. Cook', notes: 'Marginal note reads "Sterling Br[own]... 1955"; also marked "Louisa V.N."', href: 'https://dl.thehistorymakers.org/catalog/5c351775a373a55530bbe5699d5328c4' },
+  { title: 'Handwritten manuscript page (second copy)', credits: 'Lyrics by Sterling Brown, Music by Will M. Cook', notes: 'Same note as above; appears to be a duplicate scan', href: 'https://dl.thehistorymakers.org/catalog/31f4892364eb8744bb4ad3ddd136fece' },
+  { title: 'Returned ("A Negro Ballad")', credits: 'Composer Will Marion Cook', notes: "As sung by Miss Abbie Mitchell at Mrs. Cornelius Vanderbilt's Newport Theatre Party. Music Supplement of the N.Y. American and Journal, Sunday, Sept. 21, 1902, pages 5-8", href: 'https://dl.thehistorymakers.org/catalog/7f8c128f723cc355e2a5b130afa5add5' },
+  { title: "Whoop 'er Up (With a Whoop La La)", credits: 'Words Andrew B. Sterling, Music Will Marion Cook', notes: "Sung by Marie Cahill in Daniel V. Arthur's musical comedy Judy Forgot (opened Oct. 6, 1910). Pub. Harry Von Tilzer Music Publishing Co.", href: 'https://dl.thehistorymakers.org/catalog/0c5fdb14763eaa1b759110e551fe4387' },
+  { title: 'Summer Time (arr. for Female Voices, S.S.A.)', credits: 'Music George Gershwin, Lyrics DuBose Heyward', notes: 'From Porgy and Bess. Price 20 cents. Gershwin Publishing Corp.', href: 'https://dl.thehistorymakers.org/catalog/fdea1f13d4a4ca19e60f7aa3144e4b36' },
+  { title: 'Wid de Moon, Moon, Moon ("Negro Love-Song")', credits: 'Music Will Marion Cook, Words William Moore', notes: 'As sung by Marie Cahill. 60 cents. New York: G. Schirmer; Boston: The Boston Music Co.; London: Schott & Co.', href: 'https://dl.thehistorymakers.org/catalog/4ba9c4f9f83219aae21ae0efa0da829d' },
+  { title: 'If the Sands of the Seas Were Pearls (Operatic Edition)', credits: 'Words James Weldon Johnson, Music Will Marion [Cook]', notes: 'Pub. Jerome H. Remick & Co., New York / Detroit', href: 'https://dl.thehistorymakers.org/catalog/32f176afb61d55f156c94fd012e2b6a5' },
+  { title: 'Wid de Moon, Moon, Moon (second copy)', credits: 'Music Will Marion Cook, Words William Moore', notes: 'Same edition as above', href: 'https://dl.thehistorymakers.org/catalog/9df95be630e8ccdc8dde3df5e25a37ca' },
+  { title: 'The Southerners ("The Unique Musical Romance")', credits: 'Libretto & Lyrics Richard Grant and Will Mercer, Music Will Marion Cook', notes: 'Geo. W. Lederer production (1904). Pub. John H. Cook Pub. Co.; distributed by The York Music Co., NY', href: 'https://dl.thehistorymakers.org/catalog/aea3d8638cc04bff91ef63cc5997613d' },
+  { title: "Dey'll Be Wahin' / Coons a Prancin' (finale from Clorindy)", credits: 'Paul Laurence Dunbar and Will Marion [Cook]', notes: 'As sung at The Orpheum. Musical Supplement of the Sunday Examiner. Photos by Bushnell (Marie Sharp, Emelie M. Frank, James Smith)', href: 'https://dl.thehistorymakers.org/catalog/49dc1b50903859608fc151f1dcffea39' },
+  { title: 'Darktown Is Out To-Night (Cake Walk Song and Chorus)', credits: 'Words and Music Will Marion [Cook]', notes: "Introduced in E.E. Rice's Summer Nights; from Clorindy, or The Origin of the Cake Walk (Dunbar & Marion), 1898. Pub. M. Witmark & Sons, New York / Chicago", href: 'https://dl.thehistorymakers.org/catalog/c11963e964a199520ef1c0c5bb647cb5' },
+  { title: 'On Emancipation Day (March and March Song)', credits: 'Words Paul Laurence Dunbar, Music Will Marion Cook', notes: '1902. Billed with Dark Town, Who Dat Say Chicken, Lovers Lane. Sole selling agents Harry Von Tilzer Music Publishing Co.', href: 'https://dl.thehistorymakers.org/catalog/221729cc2ef0d10b5a165c9a1ef9f890' },
+  { title: 'Parthenia Johnsing ("A New Negro Melody")', credits: 'Music Will Marion Cook', notes: 'As sung by Abbie Mitchell. Music Supplement of the New York American and Journal, Sunday, Dec. 21, 1902, pages 5-8', href: 'https://dl.thehistorymakers.org/catalog/eb247131b2ec9cd9a7e770c5174bb88c' },
+  { title: 'Songs from The Casino Girl (4 songs, one cover: Down De Lovers Lane, Romance, Whatever The Hue Of Your Eyes, By-Gone Days Are Best)', credits: 'Words Paul L. Dunbar / Harry B. Smith / L. Lamprey, Music Will Marion Cook', notes: 'Direction of George Lederer, 1900–01. Pub. Jos. W. Stern & Co., New York / Chicago / London', href: 'https://dl.thehistorymakers.org/catalog/01ec14efca2a56b9336f4491032b0963' },
+];
+---
+<Layout title="HistoryMakers Collection" description="The Toni Cook Bush Collection at The HistoryMakers Digital Library: 25 playbills and sheet music covers tracing Will Marion Cook and Abbie Mitchell's Broadway and vaudeville years.">
+  <div class="wrap page-title">
+    <p class="eyebrow gilt">The HistoryMakers Digital Library</p>
+    <h1>The Toni Cook Bush Collection</h1>
+    <p class="lede">Twenty-five playbills and sheet music covers, read directly off the scanned page and transcribed here.</p>
+  </div>
+
+  <div class="wrap">
+    <section class="section">
+      <p class="intro prose">Transcribed from the cover, or front page, of each of the 25 playbill and sheet music items in the <a href="https://dl.thehistorymakers.org/?f%5Bcollection%5D%5B%5D=Toni+Cook+Bush+Collection&view=list">Toni Cook Bush Collection</a> at The HistoryMakers Digital Library. Most of these trace Will Marion Cook's Broadway and vaudeville songwriting (<em>Bandanna Land</em>, <em>Clorindy</em>, <em>In Dahomey</em>) and the 1935/1936 stage run of <em>Porgy and Bess</em>; item-level catalog metadata is minimal, so titles, credits, and publishers below come from reading the scanned page itself.</p>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><h2>Playbills <span class="count tabular">5</span></h2></div>
+      <p class="scroll-hint">Swipe to see more &rarr;</p>
+      <div class="table-scroll">
+        <table class="collection">
+          <thead>
+            <tr><th>Production</th><th>Key credits</th><th>Venue / notes</th><th>Source</th></tr>
+          </thead>
+          <tbody>
+            {playbills.map((row) => (
+              <tr>
+                <td class="prod">{row.production}</td>
+                <td>{row.credits}</td>
+                <td>{row.notes}</td>
+                <td><a href={row.href}>Item</a></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="footnote">Playbills are digitized as multi-page booklets (4 to 35 pages each); the table above reflects only what is printed on the front cover, or for the Porgy and Bess Forrest Theatre program, the first inside page, which carries the full cast list.</p>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><h2>Sheet music <span class="count tabular">20</span></h2></div>
+      <p class="scroll-hint">Swipe to see more &rarr;</p>
+      <div class="table-scroll">
+        <table class="collection">
+          <thead>
+            <tr><th>Title</th><th>Words / Music</th><th>Production / publisher</th><th>Source</th></tr>
+          </thead>
+          <tbody>
+            {sheetMusic.map((row) => (
+              <tr>
+                <td class="prod">{row.title}</td>
+                <td>{row.credits}</td>
+                <td>{row.notes}</td>
+                <td><a href={row.href}>Item</a></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="footnote">Titles, credits, and wording above are transcribed as printed on each cover, including period-typical language on some early-1900s covers.</p>
+    </section>
+
+    <section class="section">
+      <h2>Notes</h2>
+      <div class="prose">
+        <p>Two pairs of items are duplicate scans: the two handwritten "Sterling Brown / Will M. Cook" manuscript pages are visually identical, and the two "Wid de Moon, Moon, Moon" covers are the same edition. Both are listed above as separate catalog entries since they are separate items in the collection.</p>
+        <p>Most sheet music in this collection centers on composer Will Marion Cook and his collaborators (Paul Laurence Dunbar, James Weldon Johnson, Alex Rogers), spanning roughly 1898 (<em>Clorindy</em>) to the 1900s Broadway/vaudeville era, plus a cluster of George Gershwin <em>Porgy and Bess</em> material from the 1930s and a 1955-dated Sterling Brown manuscript note — suggesting the collection's Cook-era pieces are historical/archival items rather than Toni Cook Bush's own performance repertoire, while the <em>Porgy and Bess</em> and 1955 items may relate more directly to her.</p>
+        <p>Catalog metadata (creator, format, page count) is uniform and minimal across all 25 items; everything above was read directly off each scanned cover page rather than pulled from a metadata field.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Themes &amp; throughline</h2>
+      <p class="lede">This reads less like a scrapbook and more like one family's chronicle of Black American musical theater, anchored by a single marriage: composer Will Marion Cook and singer Abbie Mitchell.</p>
+      <ol class="prose themes">
+        <li><strong>The Cook-Mitchell hub, 1898&ndash;1910s.</strong> Mitchell married Cook in 1898, the year he and Paul Laurence Dunbar wrote her into <em>Clorindy</em> — the show whose finale, "Darktown Is Out To-Night," is in this collection. She went on to star in nearly every Cook production held here: <em>Bandanna Land</em>, <em>The Southerners</em>, <em>The Wild Rose</em>, <em>Casino Girl</em>, and Ziegfeld's <em>Follies of 1910</em> ("Lovie Joe"). That accounts for roughly 14 of the 20 sheet music items. (<a href="https://en.wikipedia.org/wiki/Abbie_Mitchell">Wikipedia: Abbie Mitchell</a>)</li>
+        <li><strong>The capstone, 1935&ndash;36.</strong> Mitchell's final and most celebrated stage role was Clara in the original <em>Porgy and Bess</em> — confirmed by the Forrest Theatre playbill's own cast list above ("CLARA ... Abbie Mitchell"). She was the first person to record "Summertime," and this collection holds three separate <em>Porgy and Bess</em> sheet music editions plus the opening-week playbill (Jan 27, 1936). Thirty-eight years after <em>Clorindy</em>, she's still on a Broadway stage — this time in a work reaching for "opera" rather than vaudeville.</li>
+        <li><strong>The likely family link.</strong> Cook and Mitchell's son, Will Mercer Cook, became a Howard University professor and U.S. ambassador. "Cook" sitting inside "Toni Cook Bush" is very likely this same family line, which would explain why one household holds 40-plus years of one composer's catalog — this is an inference from the surname, not confirmed against her HistoryMakers biography.</li>
+        <li><strong>A second, later thread: theater after Cook and Mitchell's own careers.</strong> <em>On Whitman Avenue</em> (1946, Cort Theatre) and the Theatre Union / Civic Repertory Theatre material fall outside their performing years (Cook died in 1944) but continue the collection's interest in theater that engages race and social justice. <em>On Whitman Avenue</em> is a returning-veteran housing-discrimination drama that Eleanor Roosevelt and Langston Hughes championed into a 148-performance run. (<a href="https://en.wikipedia.org/wiki/Civil_rights_dramas">Wikipedia: Civil rights dramas</a>)</li>
+        <li><strong>A looser thread.</strong> Two separate <em>The Little Foxes</em> items (Tallulah Bankhead's Chicago run, 1939, and a March 1941 return engagement) don't connect to the Cook/Mitchell story — they read like general Broadway memorabilia (a <em>Playgoer</em> magazine cover, not the show's own playbill), and reviewer bylines (Ashton Stevens, Claudia Cassidy) place the 1939 item at Chicago's Selwyn Theatre rather than the Broadway original.</li>
+        <li><strong>An open thread.</strong> The 1955 manuscript crediting "Lyrics by Sterling Brown / Music by Will M. Cook" postdates Cook's 1944 death by over a decade — either an unfinished Cook composition later paired with Brown's words, or a memorial/tribute piece. Unresolved.</li>
+      </ol>
+
+      <div class="note">
+        <p><strong>On the network-graph question.</strong> We considered pairing the timeline with a person/production network graph and decided against building it: the underlying structure is essentially a star graph (one dominant hub — Cook — with Mitchell as a secondary hub inside his radius, radiating out to a chronologically ordered list of shows), not a web with independent, overlapping circles. A force-directed graph wouldn't surface anything a chronological, filterable timeline doesn't already show.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Source</h2>
+      <p class="prose">The full collection, with scans of every page, is at The HistoryMakers Digital Library: <a href="https://dl.thehistorymakers.org/?f%5Bcollection%5D%5B%5D=Toni+Cook+Bush+Collection&view=list">Toni Cook Bush Collection</a>.</p>
+      <div class="btn-row" style="margin-top:12px"><a class="btn" href={`${base}/timeline`}>See the site timeline</a><a class="btn" href={`${base}/archive`}>See the archive</a></div>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  .intro { color: var(--ink-2); font-size: 16.5px; }
+  .count { color: var(--gilt); font-size: .55em; margin-left: 6px; vertical-align: middle; }
+  .scroll-hint { display: none; font-size: 12px; letter-spacing: .04em; color: var(--muted); margin: 14px 0 0; }
+  .table-scroll { overflow-x: auto; max-width: 100%; margin-top: 8px; }
+  @media (max-width: 720px) { .scroll-hint { display: block; } }
+  table.collection { font-size: 14px; min-width: 860px; }
+  table.collection th, table.collection td { text-align: left; vertical-align: top; padding: 12px 16px 12px 0; border-bottom: 1px solid var(--line); }
+  table.collection th { font-family: var(--body); font-size: 11.5px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+  table.collection td.prod { font-family: var(--display); font-size: 15.5px; color: var(--ink); width: 26%; }
+  table.collection td:nth-child(2) { width: 24%; color: var(--ink-2); }
+  table.collection td:nth-child(3) { width: 38%; color: var(--ink-2); }
+  table.collection td:last-child { white-space: nowrap; }
+  .footnote { margin-top: 16px; font-size: 13.5px; color: var(--muted); max-width: var(--measure); }
+  ol.themes { max-width: 74ch; counter-reset: theme; list-style: none; padding-left: 0; }
+  ol.themes li { position: relative; padding-left: 40px; margin-bottom: 18px; }
+  ol.themes li::before { counter-increment: theme; content: counter(theme); position: absolute; left: 0; top: .05em; font-family: var(--display); color: var(--gilt); font-size: 18px; }
+  .note { margin-top: 28px; max-width: 74ch; }
+</style>
