@@ -29,6 +29,7 @@ import imgDarktown from '../assets/archive/historymakers/darktown-is-out-tonight
 import imgEmancipationDay from '../assets/archive/historymakers/on-emancipation-day-1902.jpg';
 import imgParthenia from '../assets/archive/historymakers/parthenia-johnsing-1902.jpg';
 import imgCasinoGirl from '../assets/archive/historymakers/casino-girl-songs.jpg';
+import { pagesById } from '../data/historymakers-pages';
 
 const playbills = [
   {
@@ -72,7 +73,7 @@ const sheetMusic = [
   { title: 'Red Red Rose', credits: 'Words Alex Rogers, Music Will Marion Cook', notes: "As sung by Abbie Mitchell Cook in Williams and Walker's Bandanna Land. Pub. Shapiro Music Publisher, NY", href: 'https://dl.thehistorymakers.org/catalog/c235dfd8c41e772ba316f46da02fd69f', image: imgRedRedRose },
   { title: 'Bon Bon Buddy, The Chocolate Drop', credits: 'Words Alex Rogers, Music Will Marion Cook', notes: 'Introduced by Geo. W. Walker in Williams & Walker’s Bandanna Land. Pub. The Gotham-Attucks Music Co., NY', href: 'https://dl.thehistorymakers.org/catalog/0f222f3444ec9c4bbd88cde483adfabd', image: imgBonBonBuddy },
   { title: 'Good Evenin’ ("A Real Native Southern Negro Melody")', credits: 'Paul Laurence Dunbar and Will Marion Cook', notes: 'Music Supplement of the N.Y. American and Journal, Sunday, March 22, 1903, pages 5-8. Pub. by permission of Harry Von Tilzer Music Publishing Co.', href: 'https://dl.thehistorymakers.org/catalog/f172789a4dc37f369b80927908b6ffe7', image: imgGoodEvenin },
-  { title: 'Porgy and Bess (full score cover)', credits: 'Music George Gershwin', notes: 'Gershwin Publishing Corp., New York; Chappell & Co. Inc., sole selling agent', href: 'https://dl.thehistorymakers.org/catalog/25e81db6b4067a0273776c1e105d9ee0', image: imgPorgyFullScore },
+  { title: 'Porgy and Bess (full score cover)', credits: 'Music George Gershwin', notes: 'Gershwin Publishing Corp., New York; Chappell & Co. Inc., sole selling agent. The complete printed score, 571 pages; too long to page through here, but every page is at HistoryMakers.', href: 'https://dl.thehistorymakers.org/catalog/25e81db6b4067a0273776c1e105d9ee0', image: imgPorgyFullScore },
   { title: 'Lovie Joe', credits: 'Words Will Marion Cook, Music Joe Jordan', notes: "Jardin de Paris, Ziegfeld Revue, Follies of 1910, staged by Julian Mitchell. Pub. Harry Von Tilzer Music Publishing Co.", href: 'https://dl.thehistorymakers.org/catalog/657b331a310bd35a333b5d710321e647', image: imgLovieJoe },
   { title: 'The Little Gypsy Maid / What Would You Be A-Doing / She Did-It All Herself (3 songs, one cover)', credits: 'Words Harry B. Smith and Cecil Mack, Music Will Marion Cook', notes: "From George W. Lederer's production of The Wild Rose. Sole selling agents Harry Von Tilzer Music Publishing Co.", href: 'https://dl.thehistorymakers.org/catalog/0119cf3b8d44392f2a454fcea74e2cbe', image: imgLittleGypsyMaid },
   { title: 'Handwritten manuscript page', credits: 'Lyrics by Sterling Brown, Music by Will M. Cook', notes: 'Marginal note reads "Sterling Br[own]... 1955"; also marked "Louisa V.N."', href: 'https://dl.thehistorymakers.org/catalog/5c351775a373a55530bbe5699d5328c4', image: imgSterlingBrown1 },
@@ -119,6 +120,8 @@ const imagesById: Record<string, ImageMetadata> = {
   '01ec14efca2a56b9336f4491032b0963': imgCasinoGirl,
 };
 const imageFor = (url: string) => imagesById[url.split('/').pop() as string];
+const idFromUrl = (url: string) => url.split('/').pop() as string;
+const pagesFor = (url: string) => pagesById[idFromUrl(url)];
 
 const timelinePeople = ['Will Marion Cook', 'Abbie Mitchell', 'Paul Laurence Dunbar', 'George Gershwin', 'Tallulah Bankhead', 'Marie Cahill'];
 
@@ -314,8 +317,8 @@ const countFor = (person: string) => eras.reduce((sum, era) => sum + era.events.
 ---
 <Layout title="HistoryMakers Collection" description="The Toni Cook Bush Collection at The HistoryMakers Digital Library: 25 playbills and sheet music covers tracing Will Marion Cook and Abbie Mitchell's Broadway and vaudeville years.">
   <div class="wrap page-title">
-    <p class="eyebrow gilt">The HistoryMakers Digital Library</p>
-    <h1>The Toni Cook Bush Collection</h1>
+    <p class="eyebrow gilt">Toni Cook Bush Collection</p>
+    <h1>The HistoryMakers Collection</h1>
     <p class="lede">Twenty-five playbills and sheet music covers, read directly off the scanned page and transcribed here.</p>
   </div>
 
@@ -391,19 +394,41 @@ const countFor = (person: string) => eras.reduce((sum, era) => sum + era.events.
     <section class="section">
       <div class="section-head"><h2>Playbills <span class="count tabular">5</span></h2></div>
       <div class="hm-grid">
-        {playbills.map((row) => (
-          <article class="hm-card">
-            <a href={row.href} target="_blank" rel="noopener" class="hm-card-image">
-              <Image src={row.image} alt={row.production} width={480} widths={[240, 480, 720]} sizes="(max-width: 640px) 88vw, (max-width: 1000px) 44vw, 300px" />
-            </a>
-            <div class="hm-card-body">
-              <h3>{row.production}</h3>
-              <p class="hm-card-credits">{row.credits}</p>
-              <p class="hm-card-notes">{row.notes}</p>
-              <a class="btn" href={row.href} target="_blank" rel="noopener">View at HistoryMakers &rarr;</a>
-            </div>
-          </article>
-        ))}
+        {playbills.map((row) => {
+          const pages = pagesFor(row.href);
+          return (
+            <article class="hm-card">
+              <a href={row.href} target="_blank" rel="noopener" class="hm-card-image">
+                <Image src={row.image} alt={row.production} width={480} widths={[240, 480, 720]} sizes="(max-width: 640px) 88vw, (max-width: 1000px) 44vw, 300px" />
+              </a>
+              <div class="hm-card-body">
+                <h3>{row.production}</h3>
+                <p class="hm-card-credits">{row.credits}</p>
+                <p class="hm-card-notes">{row.notes}</p>
+                <div class="btn-row">
+                  <a class="btn" href={row.href} target="_blank" rel="noopener">View at HistoryMakers &rarr;</a>
+                </div>
+                {pages && pages.length > 1 && (
+                  <div class="hm-pages" data-pages>
+                    <button type="button" class="hm-pages-toggle" data-pages-toggle>View all {pages.length} pages &rarr;</button>
+                    <div class="hm-viewer" data-viewer hidden>
+                      <div class="hm-viewer-stage">
+                        <button type="button" class="hm-viewer-nav prev" data-prev aria-label="Previous page">&lsaquo;</button>
+                        <div class="hm-viewer-frame" data-frame>
+                          {pages.map((src, i) => (
+                            <img src={src} alt={`${row.production}, page ${i + 1}`} class={i === 0 ? 'current' : undefined} loading="lazy" />
+                          ))}
+                        </div>
+                        <button type="button" class="hm-viewer-nav next" data-next aria-label="Next page">&rsaquo;</button>
+                      </div>
+                      <p class="hm-viewer-counter"><span data-counter>1</span> / {pages.length}</p>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </article>
+          );
+        })}
       </div>
       <p class="footnote">Playbills are digitized as multi-page booklets (4 to 35 pages each); each card above reflects only what is printed on the front cover, or for the Porgy and Bess Forrest Theatre program, the first inside page, which carries the full cast list.</p>
     </section>
@@ -411,19 +436,41 @@ const countFor = (person: string) => eras.reduce((sum, era) => sum + era.events.
     <section class="section">
       <div class="section-head"><h2>Sheet music <span class="count tabular">20</span></h2></div>
       <div class="hm-grid">
-        {sheetMusic.map((row) => (
-          <article class="hm-card">
-            <a href={row.href} target="_blank" rel="noopener" class="hm-card-image">
-              <Image src={row.image} alt={row.title} width={480} widths={[240, 480, 720]} sizes="(max-width: 640px) 88vw, (max-width: 1000px) 44vw, 300px" />
-            </a>
-            <div class="hm-card-body">
-              <h3>{row.title}</h3>
-              <p class="hm-card-credits">{row.credits}</p>
-              <p class="hm-card-notes">{row.notes}</p>
-              <a class="btn" href={row.href} target="_blank" rel="noopener">View at HistoryMakers &rarr;</a>
-            </div>
-          </article>
-        ))}
+        {sheetMusic.map((row) => {
+          const pages = pagesFor(row.href);
+          return (
+            <article class="hm-card">
+              <a href={row.href} target="_blank" rel="noopener" class="hm-card-image">
+                <Image src={row.image} alt={row.title} width={480} widths={[240, 480, 720]} sizes="(max-width: 640px) 88vw, (max-width: 1000px) 44vw, 300px" />
+              </a>
+              <div class="hm-card-body">
+                <h3>{row.title}</h3>
+                <p class="hm-card-credits">{row.credits}</p>
+                <p class="hm-card-notes">{row.notes}</p>
+                <div class="btn-row">
+                  <a class="btn" href={row.href} target="_blank" rel="noopener">View at HistoryMakers &rarr;</a>
+                </div>
+                {pages && pages.length > 1 && (
+                  <div class="hm-pages" data-pages>
+                    <button type="button" class="hm-pages-toggle" data-pages-toggle>View all {pages.length} pages &rarr;</button>
+                    <div class="hm-viewer" data-viewer hidden>
+                      <div class="hm-viewer-stage">
+                        <button type="button" class="hm-viewer-nav prev" data-prev aria-label="Previous page">&lsaquo;</button>
+                        <div class="hm-viewer-frame" data-frame>
+                          {pages.map((src, i) => (
+                            <img src={src} alt={`${row.title}, page ${i + 1}`} class={i === 0 ? 'current' : undefined} loading="lazy" />
+                          ))}
+                        </div>
+                        <button type="button" class="hm-viewer-nav next" data-next aria-label="Next page">&rsaquo;</button>
+                      </div>
+                      <p class="hm-viewer-counter"><span data-counter>1</span> / {pages.length}</p>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </article>
+          );
+        })}
       </div>
       <p class="footnote">Titles, credits, and wording above are transcribed as printed on each cover, including period-typical language on some early-1900s covers.</p>
     </section>
@@ -495,6 +542,44 @@ const countFor = (person: string) => eras.reduce((sum, era) => sum + era.events.
   }
 </script>
 
+<script>
+  document.querySelectorAll<HTMLElement>('[data-pages]').forEach((root) => {
+    const toggle = root.querySelector<HTMLButtonElement>('[data-pages-toggle]');
+    const viewer = root.querySelector<HTMLElement>('[data-viewer]');
+    const frame = root.querySelector<HTMLElement>('[data-frame]');
+    const prev = root.querySelector<HTMLButtonElement>('[data-prev]');
+    const next = root.querySelector<HTMLButtonElement>('[data-next]');
+    const counter = root.querySelector<HTMLElement>('[data-counter]');
+    if (!toggle || !viewer || !frame || !prev || !next || !counter) return;
+    const imgs = Array.from(frame.querySelectorAll<HTMLImageElement>('img'));
+    const total = imgs.length;
+    const openLabel = `View all ${total} pages →`;
+    let page = 1;
+
+    const show = (n: number) => {
+      page = Math.max(1, Math.min(total, n));
+      imgs.forEach((img, i) => img.classList.toggle('current', i + 1 === page));
+      counter.textContent = String(page);
+      prev.disabled = page === 1;
+      next.disabled = page === total;
+      const cur = imgs[page - 1];
+      if (cur.loading === 'lazy') cur.loading = 'eager';
+      const nxt = imgs[page];
+      if (nxt && nxt.loading === 'lazy') nxt.loading = 'eager';
+    };
+
+    toggle.addEventListener('click', () => {
+      const opening = viewer.hidden;
+      viewer.hidden = !opening ? true : false;
+      toggle.textContent = opening ? 'Hide pages' : openLabel;
+      if (opening) show(1);
+    });
+    prev.addEventListener('click', () => show(page - 1));
+    next.addEventListener('click', () => show(page + 1));
+    show(1);
+  });
+</script>
+
 <style>
   .intro { color: var(--ink-2); font-size: 16.5px; }
   .count { color: var(--gilt); font-size: .55em; margin-left: 6px; vertical-align: middle; }
@@ -507,8 +592,23 @@ const countFor = (person: string) => eras.reduce((sum, era) => sum + era.events.
   .hm-card-body h3 { font-size: 19px; line-height: 1.2; margin: 0; }
   .hm-card-credits { font-size: 14px; color: var(--ink-2); margin: 0; }
   .hm-card-notes { font-size: 13.5px; color: var(--muted); margin: 0 0 6px; flex: 1; }
+  .hm-card-body .btn-row { margin: 2px 0 0; }
   .hm-card-body .btn { align-self: flex-start; padding: 9px 16px; font-size: 12.5px; }
   .footnote { margin-top: 16px; font-size: 13.5px; color: var(--muted); max-width: var(--measure); }
+
+  .hm-pages { margin-top: 2px; }
+  .hm-pages-toggle { background: none; border: none; padding: 0; font-family: var(--body); font-size: 12.5px; font-weight: 600; letter-spacing: .02em; color: var(--oxblood); cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+  .hm-pages-toggle:hover { color: var(--ink); }
+  .hm-viewer { margin-top: 12px; }
+  .hm-viewer-stage { display: grid; grid-template-columns: 28px 1fr 28px; gap: 6px; align-items: center; }
+  .hm-viewer-frame { position: relative; aspect-ratio: 3 / 4; background: var(--ink); overflow: hidden; }
+  .hm-viewer-frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; display: none; }
+  .hm-viewer-frame img.current { display: block; }
+  .hm-viewer-nav { width: 28px; height: 40px; border: 1px solid var(--line); background: var(--paper); color: var(--ink); font-family: var(--display); font-size: 19px; line-height: 1; cursor: pointer; padding: 0; }
+  .hm-viewer-nav:hover { background: var(--ink); color: var(--paper); }
+  .hm-viewer-nav[disabled] { opacity: .3; cursor: default; }
+  .hm-viewer-nav[disabled]:hover { background: var(--paper); color: var(--ink); }
+  .hm-viewer-counter { text-align: center; font-size: 11.5px; color: var(--muted); margin: 8px 0 0; }
 
   /* Timeline */
   .tl-legend { display: flex; flex-wrap: wrap; gap: 10px 20px; margin: 22px 0 0; padding-top: 18px; border-top: 1px solid var(--line); }
