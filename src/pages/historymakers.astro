@@ -29,6 +29,9 @@ import imgDarktown from '../assets/archive/historymakers/darktown-is-out-tonight
 import imgEmancipationDay from '../assets/archive/historymakers/on-emancipation-day-1902.jpg';
 import imgParthenia from '../assets/archive/historymakers/parthenia-johnsing-1902.jpg';
 import imgCasinoGirl from '../assets/archive/historymakers/casino-girl-songs.jpg';
+import imgInDahomey from '../assets/archive/historymakers/in-dahomey-musa-1996.jpg';
+import imgAbbieRecital from '../assets/archive/historymakers/abbie-mitchell-recital-1936.jpg';
+import imgCoquette from '../assets/archive/historymakers/coquette-curran-theatre-1929.jpg';
 import { pagesById } from '../data/historymakers-pages';
 
 const playbills = [
@@ -92,6 +95,33 @@ const sheetMusic = [
   { title: 'Songs from The Casino Girl (4 songs, one cover: Down De Lovers Lane, Romance, Whatever The Hue Of Your Eyes, By-Gone Days Are Best)', credits: 'Words Paul L. Dunbar / Harry B. Smith / L. Lamprey, Music Will Marion Cook', notes: 'Direction of George Lederer, 1900–01. Pub. Jos. W. Stern & Co., New York / Chicago / London', href: 'https://dl.thehistorymakers.org/catalog/01ec14efca2a56b9336f4491032b0963', image: imgCasinoGirl },
 ];
 
+// Four items the collection's own "Playbill" and "Sheet Music" format filters miss: two concert
+// programs and two publications, filed under "Programs/Events" and "Publication." One of them is
+// the single most important item here: the complete scholarly edition of In Dahomey.
+const beyond = [
+  {
+    title: 'The Music and Scripts of In Dahomey',
+    credits: 'Edited by Thomas L. Riis',
+    notes: 'Music of the United States of America, vol. 5 / Recent Researches in American Music, vol. 25. Published for the American Musicological Society by A-R Editions, 1996. 317 pages: the complete script, every musical number in full score, and a scholarly essay on the show’s genesis, creators, and performance history. Confirms Abbie Mitchell sang “Brown-Skin Baby Mine” in the original 1903 production. No playbill or sheet music for In Dahomey survives elsewhere in this collection — this book is what stands in for it.',
+    href: 'https://dl.thehistorymakers.org/catalog/651805452bcbe363f26f9fbfe41042aa',
+    image: imgInDahomey,
+  },
+  {
+    title: 'Abbie Mitchell, soprano — recital program',
+    credits: 'The Mus-Art Club and the Music Department, Public Schools, Divisions X–XIII',
+    notes: 'Lincoln Congregational Temple, 11th and R Streets NW, Washington, D.C., Sunday evening, April 5, 1936. Brahms, Wolf, Schubert, Fauré, Rachmaninoff, and others. Signed on the cover. Ten weeks after Porgy and Bess opened at the Forrest Theatre with Mitchell as Clara.',
+    href: 'https://dl.thehistorymakers.org/catalog/d87d054ab001b557ecbfcd75f7c8f3e6',
+    image: imgAbbieRecital,
+  },
+  {
+    title: 'Coquette, Curran Theatre',
+    credits: 'Jed Harris presents Helen Hayes',
+    notes: '"In Association with Crosby Gaige." Drama by George Abbott and Ann Preston Bridges. San Francisco, beginning Monday night, June 3, 1929. General Broadway memorabilia — no connection to Cook or Mitchell found.',
+    href: 'https://dl.thehistorymakers.org/catalog/6fe1905d25d8a5909b3a88f6aaa8409a',
+    image: imgCoquette,
+  },
+];
+
 const imagesById: Record<string, ImageMetadata> = {
   '99a0c124b568560e8a7b505aaf187ed6': imgOnWhitman,
   'eb47db71043b1c1172cf45a5c2b82764': imgLittleFoxesPlaygoer,
@@ -118,12 +148,15 @@ const imagesById: Record<string, ImageMetadata> = {
   '221729cc2ef0d10b5a165c9a1ef9f890': imgEmancipationDay,
   'eb247131b2ec9cd9a7e770c5174bb88c': imgParthenia,
   '01ec14efca2a56b9336f4491032b0963': imgCasinoGirl,
+  '651805452bcbe363f26f9fbfe41042aa': imgInDahomey,
+  'd87d054ab001b557ecbfcd75f7c8f3e6': imgAbbieRecital,
+  '6fe1905d25d8a5909b3a88f6aaa8409a': imgCoquette,
 };
 const imageFor = (url: string) => imagesById[url.split('/').pop() as string];
 const idFromUrl = (url: string) => url.split('/').pop() as string;
 const pagesFor = (url: string) => pagesById[idFromUrl(url)];
 
-const timelinePeople = ['Will Marion Cook', 'Abbie Mitchell', 'Paul Laurence Dunbar', 'George Gershwin', 'Tallulah Bankhead', 'Marie Cahill'];
+const timelinePeople = ['Will Marion Cook', 'Abbie Mitchell', 'Paul Laurence Dunbar', 'George Gershwin', 'Tallulah Bankhead', 'Marie Cahill', 'Bert Williams', 'George Walker', 'Helen Hayes'];
 
 const eras = [
   {
@@ -184,6 +217,14 @@ const eras = [
         people: ['Will Marion Cook', 'Abbie Mitchell'],
         note: 'Billed as sung by Mitchell; Cook credited as “the composer of In Dahomey.”',
         items: [{ title: 'N.Y. American and Journal music supplement', url: 'https://dl.thehistorymakers.org/catalog/eb247131b2ec9cd9a7e770c5174bb88c' }],
+      },
+      {
+        date: 'Feb 18, 1903',
+        cat: 'hub',
+        title: '“In Dahomey”',
+        people: ['Will Marion Cook', 'Abbie Mitchell', 'Paul Laurence Dunbar', 'Bert Williams', 'George Walker'],
+        note: 'No playbill or sheet music for In Dahomey survives in this collection — but a 1996 scholarly edition of its complete music and scripts does. Opened at the New York Theatre after a Stamford, Connecticut tryout; ran over 1,100 performances through 1905. Mitchell sang "Brown-Skin Baby Mine."',
+        items: [{ title: 'The Music and Scripts of In Dahomey, ed. Thomas L. Riis (1996)', url: 'https://dl.thehistorymakers.org/catalog/651805452bcbe363f26f9fbfe41042aa' }],
       },
       {
         date: 'March 22, 1903',
@@ -262,12 +303,28 @@ const eras = [
         note: "The Theatre Guild's opening week. Mitchell plays Clara — by her own biography, her final and most celebrated stage role, thirty-eight years after Clorindy.",
         items: [{ title: 'Opening-week playbill, full cast list', url: 'https://dl.thehistorymakers.org/catalog/63db0febd8ddd31aec7fcf3b8d84de27' }],
       },
+      {
+        date: 'April 5, 1936',
+        cat: 'capstone',
+        title: 'Abbie Mitchell recital, Washington, D.C.',
+        people: ['Abbie Mitchell'],
+        note: 'Ten weeks after Porgy and Bess opened. A signed program: Brahms, Wolf, Schubert, Fauré, Rachmaninoff, and others, at the Lincoln Congregational Temple.',
+        items: [{ title: 'Recital program, The Mus-Art Club', url: 'https://dl.thehistorymakers.org/catalog/d87d054ab001b557ecbfcd75f7c8f3e6' }],
+      },
     ],
   },
   {
-    label: '1939 – 1955',
+    label: '1929 – 1955',
     title: 'After the curtain',
     events: [
+      {
+        date: '1929',
+        cat: 'other',
+        title: 'Coquette, Curran Theatre',
+        people: ['Helen Hayes'],
+        note: 'Jed Harris presents Helen Hayes, in association with Crosby Gaige. San Francisco. No connection to Cook or Mitchell found.',
+        items: [{ title: 'Program, Curran Theatre', url: 'https://dl.thehistorymakers.org/catalog/6fe1905d25d8a5909b3a88f6aaa8409a' }],
+      },
       {
         date: 'c. 1933–37',
         cat: 'later',
@@ -315,38 +372,35 @@ const eras = [
 const totalEvents = eras.reduce((sum, era) => sum + era.events.length, 0);
 const countFor = (person: string) => eras.reduce((sum, era) => sum + era.events.filter((ev) => ev.people.includes(person)).length, 0);
 ---
-<Layout title="HistoryMakers Collection" description="The Toni Cook Bush Collection at The HistoryMakers Digital Library: 25 playbills and sheet music covers tracing Will Marion Cook and Abbie Mitchell's Broadway and vaudeville years.">
+<Layout title="HistoryMakers Collection" description="The Toni Cook Bush Collection at The HistoryMakers Digital Library: 29 playbills, sheet music, programs, and publications tracing Will Marion Cook and Abbie Mitchell's Broadway and vaudeville years, including a complete scholarly edition of In Dahomey.">
   <div class="wrap page-title">
     <p class="eyebrow gilt">Toni Cook Bush Collection</p>
     <h1>The HistoryMakers Collection</h1>
-    <p class="lede">Twenty-five playbills and sheet music covers, read directly off the scanned page and transcribed here.</p>
+    <p class="lede">Twenty-nine playbills, sheet music, programs, and publications, read directly off the scanned page and transcribed here — including a complete scholarly edition of <em>In Dahomey</em>.</p>
   </div>
 
   <div class="wrap">
     <section class="section">
-      <p class="intro prose">Transcribed from the cover, or front page, of each of the 25 playbill and sheet music items in the <a href="https://dl.thehistorymakers.org/?f%5Bcollection%5D%5B%5D=Toni+Cook+Bush+Collection&view=list">Toni Cook Bush Collection</a> at The HistoryMakers Digital Library. Most of these trace Will Marion Cook's Broadway and vaudeville songwriting (<em>Bandanna Land</em>, <em>Clorindy</em>, <em>In Dahomey</em>) and the 1935/1936 stage run of <em>Porgy and Bess</em>; item-level catalog metadata is minimal, so titles, credits, and publishers below come from reading the scanned page itself.</p>
+      <p class="intro prose">Transcribed from the cover, or front page, of each of the 25 playbill and sheet music items in the <a href="https://dl.thehistorymakers.org/?f%5Bcollection%5D%5B%5D=Toni+Cook+Bush+Collection&view=list">Toni Cook Bush Collection</a> at The HistoryMakers Digital Library. Most of these trace Will Marion Cook's Broadway and vaudeville songwriting (<em>Bandanna Land</em>, <em>Clorindy</em>) and the 1935/1936 stage run of <em>Porgy and Bess</em>; item-level catalog metadata is minimal, so titles, credits, and publishers below come from reading the scanned page itself.</p>
+      <p class="intro prose">The collection actually holds 29 items — the catalog's own search filters this page first went through only surface "Playbill" and "Sheet Music" formats, which quietly hid four more: two concert programs and two publications. One of those publications turned out to be the single most important item in the whole collection for this story: a 1996 scholarly critical edition of the complete music and scripts of <em>In Dahomey</em>, Cook's most historically significant show and the one that had been missing from every list until now. All four are below, after the playbills and sheet music.</p>
     </section>
 
     <section class="section">
       <h2>Themes &amp; throughline</h2>
       <p class="lede">This reads less like a scrapbook and more like one family's chronicle of Black American musical theater, anchored by a single marriage: composer Will Marion Cook and singer Abbie Mitchell.</p>
       <ol class="prose themes">
-        <li><strong>The Cook-Mitchell hub, 1898&ndash;1910s.</strong> Mitchell married Cook in 1898, the year he and Paul Laurence Dunbar wrote her into <em>Clorindy</em> — the show whose finale, "Darktown Is Out To-Night," is in this collection. She went on to star in nearly every Cook production held here: <em>Bandanna Land</em>, <em>The Southerners</em>, <em>The Wild Rose</em>, <em>Casino Girl</em>, and Ziegfeld's <em>Follies of 1910</em> ("Lovie Joe"). That accounts for roughly 14 of the 20 sheet music items. (<a href="https://en.wikipedia.org/wiki/Abbie_Mitchell">Wikipedia: Abbie Mitchell</a>)</li>
-        <li><strong>The capstone, 1935&ndash;36.</strong> Mitchell's final and most celebrated stage role was Clara in the original <em>Porgy and Bess</em> — confirmed by the Forrest Theatre playbill's own cast list further down the page ("CLARA ... Abbie Mitchell"). She was the first person to record "Summertime," and this collection holds three separate <em>Porgy and Bess</em> sheet music editions plus the opening-week playbill (Jan 27, 1936). Thirty-eight years after <em>Clorindy</em>, she's still on a Broadway stage — this time in a work reaching for "opera" rather than vaudeville.</li>
+        <li><strong>The Cook-Mitchell hub, 1898&ndash;1910s.</strong> Mitchell married Cook in 1898, the year he and Paul Laurence Dunbar wrote her into <em>Clorindy</em> — the show whose finale, "Darktown Is Out To-Night," is in this collection. She went on to star in nearly every Cook production held here: <em>Bandanna Land</em>, <em>The Southerners</em>, <em>The Wild Rose</em>, <em>Casino Girl</em>, and Ziegfeld's <em>Follies of 1910</em> ("Lovie Joe"). That accounts for roughly 14 of the 20 sheet music items. <em>In Dahomey</em> — arguably Cook's most historically important show, and one Mitchell also sang in — has no playbill or sheet music here, but the collection holds something better: a complete scholarly edition of its music and scripts. See below. (<a href="https://en.wikipedia.org/wiki/Abbie_Mitchell">Wikipedia: Abbie Mitchell</a>)</li>
+        <li><strong>The capstone, 1935&ndash;36 — and its coda.</strong> Mitchell's final and most celebrated stage role was Clara in the original <em>Porgy and Bess</em> — confirmed by the Forrest Theatre playbill's own cast list further down the page ("CLARA ... Abbie Mitchell"). She was the first person to record "Summertime," and this collection holds three separate <em>Porgy and Bess</em> sheet music editions plus the opening-week playbill (Jan 27, 1936). Ten weeks later, a signed recital program puts her on a stage in Washington, D.C., singing Brahms, Schubert, and Rachmaninoff — proof the momentum from Broadway carried into the concert hall.</li>
         <li><strong>The likely family link.</strong> Cook and Mitchell's son, Will Mercer Cook, became a Howard University professor and U.S. ambassador. "Cook" sitting inside "Toni Cook Bush" is very likely this same family line, which would explain why one household holds 40-plus years of one composer's catalog — this is an inference from the surname, not confirmed against her HistoryMakers biography.</li>
         <li><strong>A second, later thread: theater after Cook and Mitchell's own careers.</strong> <em>On Whitman Avenue</em> (1946, Cort Theatre) and the Theatre Union / Civic Repertory Theatre material fall outside their performing years (Cook died in 1944) but continue the collection's interest in theater that engages race and social justice. <em>On Whitman Avenue</em> is a returning-veteran housing-discrimination drama that Eleanor Roosevelt and Langston Hughes championed into a 148-performance run. (<a href="https://en.wikipedia.org/wiki/Civil_rights_dramas">Wikipedia: Civil rights dramas</a>)</li>
-        <li><strong>A looser thread.</strong> Two separate <em>The Little Foxes</em> items (Tallulah Bankhead's Chicago run, 1939, and a March 1941 return engagement) don't connect to the Cook/Mitchell story — they read like general Broadway memorabilia (a <em>Playgoer</em> magazine cover, not the show's own playbill), and reviewer bylines (Ashton Stevens, Claudia Cassidy) place the 1939 item at Chicago's Selwyn Theatre rather than the Broadway original.</li>
+        <li><strong>A looser thread.</strong> Three items don't connect to the Cook/Mitchell story and read like general Broadway memorabilia: two <em>Little Foxes</em> items (Tallulah Bankhead's Chicago run, 1939, and a March 1941 return engagement — reviewer bylines place the 1939 item at Chicago's Selwyn Theatre, not the Broadway original), and a 1929 Curran Theatre program for Helen Hayes in <em>Coquette</em>, in San Francisco.</li>
         <li><strong>An open thread.</strong> The 1955 manuscript crediting "Lyrics by Sterling Brown / Music by Will M. Cook" postdates Cook's 1944 death by over a decade — either an unfinished Cook composition later paired with Brown's words, or a memorial/tribute piece. Unresolved.</li>
       </ol>
-
-      <div class="note">
-        <p><strong>On the network-graph question.</strong> We considered pairing the timeline with a person/production network graph and decided against building it: the underlying structure is essentially a star graph (one dominant hub — Cook — with Mitchell as a secondary hub inside his radius, radiating out to a chronologically ordered list of shows), not a web with independent, overlapping circles. A force-directed graph wouldn't surface anything a chronological, filterable timeline doesn't already show.</p>
-      </div>
     </section>
 
     <section class="section">
       <div class="section-head"><h2>From <em>Clorindy</em> to <em>Catfish Row</em></h2></div>
-      <p class="lede">Nineteen of the playbills and sheet-music editions, set in order. Almost all trace one marriage &mdash; composer Will Marion Cook and singer Abbie Mitchell &mdash; from the cakewalk's Broadway debut in 1898 to Mitchell's final role, as Clara in the original <em>Porgy and Bess</em>.</p>
+      <p class="lede">Twenty-two of the collection's items, set in order — playbills, sheet music, a recital program, and one scholarly edition. Almost all trace one marriage &mdash; composer Will Marion Cook and singer Abbie Mitchell &mdash; from the cakewalk's Broadway debut in 1898 through <em>In Dahomey</em> to Mitchell's final role, as Clara in the original <em>Porgy and Bess</em>, and a recital ten weeks after.</p>
 
       <div class="tl-legend" role="list" aria-label="Thread key">
         <span class="tl-legend-item" role="listitem"><span class="tl-swatch" data-cat="hub"></span>Cook&ndash;Mitchell hub, 1898&ndash;1910s</span>
@@ -490,6 +544,49 @@ const countFor = (person: string) => eras.reduce((sum, era) => sum + era.events.
         })}
       </div>
       <p class="footnote">Titles, credits, and wording above are transcribed as printed on each cover, including period-typical language on some early-1900s covers.</p>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><h2>Beyond the playbills and sheet music <span class="count tabular">3</span></h2></div>
+      <p class="lede">Filed under "Programs/Events" and "Publication" — formats easy to miss if you only search for playbills and sheet music. The first is the one that matters most.</p>
+      <div class="hm-grid">
+        {beyond.map((row) => {
+          const pages = pagesFor(row.href);
+          return (
+            <article class="hm-card">
+              <a href={row.href} target="_blank" rel="noopener" class="hm-card-image">
+                <Image src={row.image} alt={row.title} width={480} widths={[240, 480, 720]} sizes="(max-width: 640px) 88vw, (max-width: 1000px) 44vw, 300px" />
+              </a>
+              <div class="hm-card-body">
+                <h3>{row.title}</h3>
+                <p class="hm-card-credits">{row.credits}</p>
+                <p class="hm-card-notes">{row.notes}</p>
+                <div class="btn-row">
+                  <a class="btn" href={row.href} target="_blank" rel="noopener">View at HistoryMakers &rarr;</a>
+                </div>
+                {pages && pages.length > 1 && (
+                  <div class="hm-pages" data-pages>
+                    <button type="button" class="hm-pages-toggle" data-pages-toggle>View all {pages.length} pages &rarr;</button>
+                    <div class="hm-viewer" data-viewer hidden>
+                      <div class="hm-viewer-stage">
+                        <button type="button" class="hm-viewer-nav prev" data-prev aria-label="Previous page">&lsaquo;</button>
+                        <div class="hm-viewer-frame" data-frame>
+                          {pages.map((src, i) => (
+                            <img src={src} alt={`${row.title}, page ${i + 1}`} class={i === 0 ? 'current' : undefined} loading="lazy" />
+                          ))}
+                        </div>
+                        <button type="button" class="hm-viewer-nav next" data-next aria-label="Next page">&rsaquo;</button>
+                      </div>
+                      <p class="hm-viewer-counter"><span data-counter>1</span> / {pages.length}</p>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </article>
+          );
+        })}
+      </div>
+      <p class="footnote">The In Dahomey volume runs 317 pages, so it's cover-only here; the other two page through in full. A fourth item this search also surfaced, a 181-page family genealogy volume ("Bonds Conway, 1763-1843: Ancestors and Descendants"), isn't part of the Cook-Mitchell story and isn't shown here.</p>
     </section>
 
     <section class="section">
